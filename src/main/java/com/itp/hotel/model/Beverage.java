@@ -33,9 +33,7 @@ public class Beverage {
 	
 	@Column(name = "Discount")
 	private double Discount;
-	
-	@Column(name = "available_Status")
-	private String available_Status;
+
 	
 	@Column(name = "description")
 	private String  description;
@@ -57,14 +55,13 @@ public class Beverage {
 	
 	
 	
-	public Beverage(double unit_Price, String b_Name, String b_Type, double discount, String available_Status,
+	public Beverage(double unit_Price, String b_Name, String b_Type, double discount,
 			String description, List<BarroomOrder> barroom_Orders) {
 		super();
 		this.unit_Price = unit_Price;
 		this.b_Name = b_Name;
 		this.b_Type = b_Type;
 		Discount = discount;
-		this.available_Status = available_Status;
 		this.description = description;
 		this.barroom_Orders = barroom_Orders;
 	}
@@ -100,12 +97,6 @@ public class Beverage {
 	}
 	public void setDiscount(double discount) {
 		Discount = discount;
-	}
-	public String getAvailable_Status() {
-		return available_Status;
-	}
-	public void setAvailable_Status(String available_Status) {
-		this.available_Status = available_Status;
 	}
 	public String getDescription() {
 		return description;
