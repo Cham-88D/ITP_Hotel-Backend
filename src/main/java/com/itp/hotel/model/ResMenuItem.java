@@ -35,9 +35,7 @@ public class ResMenuItem {
 	@Column(name = "discount")
 	private int discount;
 	
-	@Column(name= "available_status")
-	private String availableStatus;
-	
+
 	
 
 	@OneToMany(mappedBy = "res")
@@ -48,7 +46,7 @@ public class ResMenuItem {
 	}
 
 	public ResMenuItem(long menu_item_id, String menuItemType, String menuItemName, double unitPrice,
-			String description, int discount, String availableStatus, List<OrderMenuItem> order_Menu_Item) {
+			String description, int discount, List<OrderMenuItem> order_Menu_Item) {
 		super();
 		this.menu_item_id = menu_item_id;
 		this.menuItemType = menuItemType;
@@ -56,7 +54,6 @@ public class ResMenuItem {
 		this.unitPrice = unitPrice;
 		this.description = description;
 		this.discount = discount;
-		this.availableStatus = availableStatus;
 		this.order_Menu_Item = order_Menu_Item;
 	}
 
@@ -84,9 +81,7 @@ public class ResMenuItem {
 		this.discount = discount;
 	}
 
-	public void setAvailableStatus(String availableStatus) {
-		this.availableStatus = availableStatus;
-	}
+
 
 	public void setOrder_Menu_Item(List<OrderMenuItem> order_Menu_Item) {
 		this.order_Menu_Item = order_Menu_Item;
@@ -116,9 +111,7 @@ public class ResMenuItem {
 		return discount;
 	}
 
-	public String getAvailableStatus() {
-		return availableStatus;
-	}
+
 
 	public List<OrderMenuItem> getOrder_Menu_Item() {
 		return order_Menu_Item;
