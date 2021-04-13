@@ -32,7 +32,7 @@ public class PurchasedItemDetail {
 	private int Sid;
 	
 	@Column(name = "Item_Code")
-	private int Category;
+	private int ItemCode;
 	
 	@Column(name = "Payment")
 	private long payment;
@@ -49,91 +49,69 @@ public class PurchasedItemDetail {
 	}
 
 
-	public PurchasedItemDetail(int invoiceNo, Employee employee, int sid, int category, long payment, LocalDate date,
-			String it_Category) {
-		super();
+	public PurchasedItemDetail(int invoiceNo, Employee employee, int sid, int itemCode, long payment, LocalDate date, String it_Category) {
 		InvoiceNo = invoiceNo;
 		this.employee = employee;
 		Sid = sid;
-		Category = category;
+		ItemCode = itemCode;
 		this.payment = payment;
 		Date = date;
 		It_Category = it_Category;
 	}
-
 
 	public void setInvoiceNo(int invoiceNo) {
 		InvoiceNo = invoiceNo;
 	}
 
-
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
-
 
 	public void setSid(int sid) {
 		Sid = sid;
 	}
 
-
-	public void setCategory(int category) {
-		Category = category;
+	public void setItemCode(int itemCode) {
+		ItemCode = itemCode;
 	}
-
 
 	public void setPayment(long payment) {
 		this.payment = payment;
 	}
 
-
 	public void setDate(LocalDate date) {
 		Date = date;
 	}
-
 
 	public void setIt_Category(String it_Category) {
 		It_Category = it_Category;
 	}
 
-
 	public int getInvoiceNo() {
 		return InvoiceNo;
 	}
-
 
 	public Employee getEmployee() {
 		return employee;
 	}
 
-
 	public int getSid() {
 		return Sid;
 	}
 
-
-	public int getCategory() {
-		return Category;
+	public int getItemCode() {
+		return ItemCode;
 	}
-
 
 	public long getPayment() {
 		return payment;
 	}
 
-
 	public LocalDate getDate() {
 		return Date;
 	}
 
-
 	public String getIt_Category() {
 		return It_Category;
 	}
-
-	
-
-	
-	
-
 }
