@@ -39,10 +39,7 @@ public class Item {
 	
 	@Column(name= "Date")
 	private LocalDate Date;
-	
-	@Column(name= "NIC")
-	private String Nic;
-	
+
 	@Column(name = "Description")
 	private String Description;
 	
@@ -51,17 +48,13 @@ public class Item {
 		
 	}
 
-
-	public Item(int itemCode, Supplier supplier, String name, String it_Category, String price, LocalDate date,
-			String nic, String description) {
-		super();
+	public Item(int itemCode, Supplier supplier, String name, String it_Category, String price, LocalDate date, String description) {
 		ItemCode = itemCode;
 		this.supplier = supplier;
 		Name = name;
 		It_Category = it_Category;
 		this.price = price;
 		Date = date;
-		Nic = nic;
 		Description = description;
 	}
 
@@ -70,82 +63,55 @@ public class Item {
 		ItemCode = itemCode;
 	}
 
-
 	public void setSupplier(Supplier supplier) {
 		this.supplier = supplier;
 	}
-
 
 	public void setName(String name) {
 		Name = name;
 	}
 
-
 	public void setIt_Category(String it_Category) {
 		It_Category = it_Category;
 	}
-
 
 	public void setPrice(String price) {
 		this.price = price;
 	}
 
-
 	public void setDate(LocalDate date) {
 		Date = date;
 	}
-
-
-	public void setNic(String nic) {
-		Nic = nic;
-	}
-
 
 	public void setDescription(String description) {
 		Description = description;
 	}
 
-
 	public int getItemCode() {
 		return ItemCode;
 	}
-
 
 	public Supplier getSupplier() {
 		return supplier;
 	}
 
-
 	public String getName() {
 		return Name;
 	}
-
 
 	public String getIt_Category() {
 		return It_Category;
 	}
 
-
 	public String getPrice() {
 		return price;
 	}
-
 
 	public LocalDate getDate() {
 		return Date;
 	}
 
-
-	public String getNic() {
-		return Nic;
-	}
-
-
 	public String getDescription() {
 		return Description;
 	}
-
-	
-	
-
 }
