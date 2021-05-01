@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,39 +17,46 @@ import com.itp.hotel.model.Barroom_Order;
 import com.itp.hotel.model.Beverage;
 import com.itp.hotel.model.ResourceNotFoundException;
 import com.itp.hotel.repository.Barroom_orderRepository;
+import com.itp.hotel.service.Barroom_OrderService;
+import com.itp.hotel.service.BeverageService;
 
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/v1/")
 
 public class Barroom_orderController {
 	
 	@Autowired
-	private Barroom_orderRepository barroom_orderRepository;
+	private Barroom_OrderService barroom_OrderService;
 	
 	@GetMapping("/barroom_Order")
 	
 	public List<Barroom_Order> getAllbarOrder(){
 		
-		return barroom_orderRepository.findAll();
+		return barroom_OrderService.listAll();
 	}
 	
 	//insert order items
-			@PostMapping("/barroom_order")
-			public Barroom_Order insertBarOrders(@RequestBody   Barroom_Order barroom_order){
-				return barroom_orderRepository.save(barroom_order);
+			@PostMapping("/bar-room-order")
+			public ResponseEntity<Barroom_Order> insertBarOrders(@RequestBody   Barroom_Order barroom_order){
+				try {
+					barroom_OrderService.save(barroom_order);
+					return ResponseEntity.ok(barroom_order);
+				}catch(Exception e) {
+					throw e;
+				}
 			}
 			
 			
 			
-			@GetMapping("/barroom_order/{bar_ID}")
-			public ResponseEntity<Barroom_Order> getBarroom_order_by_id(@PathVariable Long bar_ID) {
-					
-				Barroom_Order barroom_order = barroom_orderRepository.findById(bar_ID)
-						.orElseThrow(()-> new ResourceNotFoundException("menu item not exit with this key: "+bar_ID));
-				return ResponseEntity.ok(barroom_order);
-				
-				
+			@GetMapping("/bar-room-order/{id}")
+			public ResponseEntity<Barroom_Order> getBarroom_order_by_id(@PathVariable Long id) {
+					try {
+						Barroom_Order barroom_order = barroom_OrderService.get(id);
+						return ResponseEntity.ok(barroom_order);
+					}catch(Exception e) {
+						throw e;
+					}
 				
 			}
 	

@@ -11,8 +11,9 @@ import com.itp.hotel.model.Beverage;
 public interface BeverageRepository extends JpaRepository<Beverage, Long> {
 	
 	
-	@Query(value = "SELECT * FROM beverages WHERE b_type =?1",nativeQuery = true)
-	public List<Beverage> searchQuery(String bevType);
+//	@Query(value = "SELECT * FROM beverages WHERE b_type =?1",nativeQuery = true)
+//	public List<Beverage> searchQuery(String bevType);
 
+	
 
 }
