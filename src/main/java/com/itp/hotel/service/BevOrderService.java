@@ -11,27 +11,30 @@ import com.itp.hotel.model.BevOrder;
 import com.itp.hotel.model.Beverage;
 import com.itp.hotel.repository.BevOrderRepository;
 import com.itp.hotel.repository.BeverageRepository;
+import com.itp.hotel.repository.BillRepository;
 
 @Service
 public class BevOrderService {
 
 	@Autowired
 	private BevOrderRepository repo;
+	@Autowired
+	private BillRepository billRepo;
 	
 	public List<BevOrder> listAll(){
 		List<BevOrder> bevOrders = repo.findAll();
 		List<BevOrder> formattedBevOrders = new ArrayList<BevOrder>();
-		List<Beverage> bev = new ArrayList<Beverage>();
+		//List<Beverage> bev = new ArrayList<Beverage>();
 		for(BevOrder b :bevOrders ) {
 			BevOrder newBevOrderObj = new BevOrder();
-			Beverage newBevObj = new Beverage();
+			//Beverage newBevObj = new Beverage();
 			
 			newBevOrderObj.setId(b.getId());
 			newBevOrderObj.setDiscount(b.getDiscount());
 			newBevOrderObj.setQuantity(b.getQuantity());
 			newBevOrderObj.setTotal(b.getTotal());
-			System.out.print("-----------------------------------------");
-			System.out.print(newBevOrderObj.getBeverage());
+			//System.out.print("-----------------------------------------");
+			//System.out.print(newBevOrderObj.getBeverage());
 			//newBevObj.setBeverage(b.getBeverage());
 			formattedBevOrders.add(newBevOrderObj);
 		}
@@ -54,11 +57,20 @@ public class BevOrderService {
 		return repo.getAllBevOrders();
 	}
 	
-	public List<Long> getBevIds(){
-		return repo.getBevIds();
-	}
+//	public List<Long> getBevIds(){
+//		return repo.getBevIds();
+//	}
 	
 	public List<Object> getBeverageOrdersByBarroomOrderId(Barroom_Order order){
 		return repo.getBeverageOrdersByBarroomOrderId(order);
 	}
+	
+	public List<Object> getAllBevOrdersGroupedByOrderId(){
+		return repo.getAllBevOrdersGroupedByOrderId(); 
+	}
+	
+	public List<Object> getBevOrdersGroupedByOrderIdFilterByStatus(String status){
+		return repo.getBevOrdersGroupedByOrderIdFilterByStatus(status); 
+	}
+	
 }

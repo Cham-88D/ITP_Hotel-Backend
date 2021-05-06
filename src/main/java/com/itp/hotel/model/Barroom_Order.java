@@ -15,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -62,6 +63,9 @@ public class Barroom_Order {
 	@OneToMany(mappedBy = "barroom_Order", cascade = CascadeType.ALL)
 	private Set<BevOrder> bevOrders = new HashSet();
 
+	@OneToOne(mappedBy = "barroom_Order")
+    private Bill bill;
+	
 	public Barroom_Order() {
 		super();
 	}
