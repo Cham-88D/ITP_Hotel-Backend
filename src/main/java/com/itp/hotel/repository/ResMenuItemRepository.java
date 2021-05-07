@@ -15,5 +15,8 @@ public interface ResMenuItemRepository extends JpaRepository<ResMenuItem,Long>{
    
 	@Query(value = "SELECT * FROM res_menu_item  WHERE menu_item_type =?1",nativeQuery = true)
     List<ResMenuItem> searchQuery(String menuItemType);
+	
+	@Query(value = "SELECT * FROM res_menu_item  WHERE menu_item_name =?1",nativeQuery = true)
+    List<ResMenuItem> searchMenuName(String menuItemName);
 
 }
