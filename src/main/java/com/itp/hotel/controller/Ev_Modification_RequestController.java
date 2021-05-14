@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +21,7 @@ import com.itp.hotel.model.EvModificationRequest;
 
 import com.itp.hotel.repository.EvModificationRequestRepository;
 
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/v1/")
 
@@ -34,16 +35,23 @@ public class Ev_Modification_RequestController {
 	        return ev_Modification_RequestRepository.findAll();
 	    }
 	    
-	    @GetMapping("/ev_Modification_Requests/{Ev_M_ID}")
+	    /*@GetMapping("/ev_Modification_Requests/{Ev_M_ID}")
 	    public ResponseEntity<EvModificationRequest> getEv_Modification_RequestById(@PathVariable(value = "Ev_M_ID") Integer Ev_M_ID)
 	        throws ResourceNotFoundException {
 	    	EvModificationRequest ev_Modification_Request = ev_Modification_RequestRepository.findById(Ev_M_ID)
 	    			.orElseThrow(() -> new ResourceNotFoundException("Ev_Modification_Request not found for this id :: " + Ev_M_ID));
 	        return ResponseEntity.ok().body(ev_Modification_Request);
+	    }*/
+	 
+	    @GetMapping("/ev_Modification_Requests/{Ev_M_ID}")
+	    public ResponseEntity<EvModificationRequest> getEv_Modification_RequestById(@PathVariable Integer Ev_M_ID){
+	    	EvModificationRequest ev_Modification_Request = ev_Modification_RequestRepository.findById(Ev_M_ID)
+	    			.orElseThrow(() -> new ResourceNotFoundException("Ev_Modification_Request not found for this id :: " + Ev_M_ID));
+	        return ResponseEntity.ok(ev_Modification_Request);
 	    }
 	    
 	    @PostMapping("/ev_Modification_Requests")
-	    public EvModificationRequest createEv_Modification_Request(@Valid @RequestBody EvModificationRequest ev_Modification_Request) {
+	    public EvModificationRequest createEv_Modification_Request( @RequestBody EvModificationRequest ev_Modification_Request) {
 	        return ev_Modification_RequestRepository.save(ev_Modification_Request);
 	    }
 	    
@@ -58,7 +66,8 @@ public class Ev_Modification_RequestController {
 	    	ev_Modification_Request.setMessage(ev_Modification_Request.getMessage());
 	    	ev_Modification_Request.setEmail(ev_Modification_Request.getEmail());
 	    	ev_Modification_Request.setDays_Remain_Booking(ev_Modification_Request.getDays_Remain_Booking());
-	    	
+	    //	ev_Modification_Request.setCustomer(ev_Modification_Request.getCustomer());
+	    //	ev_Modification_Request.setBooking(ev_Modification_Request.getBooking());
 	        
 	        final EvModificationRequest updatedEv_Modification_Request = ev_Modification_RequestRepository.save(ev_Modification_Request);
 	        return ResponseEntity.ok(updatedEv_Modification_Request);
@@ -78,3 +87,17 @@ public class Ev_Modification_RequestController {
 	    
 
 }
+
+/*@GetMapping("/ev_Modification_Requests/{Ev_M_ID}")
+public ResponseEntity<EvModificationRequest> getEv_Modification_RequestById(@PathVariable Integer Ev_M_ID)
+	EvModificationRequest ev_Modification_Request = ev_Modification_RequestRepository.findById(Ev_M_ID)
+			.orElseThrow(() -> new ResourceNotFoundException("Ev_Modification_Request not found for this id :: " + Ev_M_ID));
+    return ResponseEntity.ok(ev_Modification_Request);
+}*/
+
+/*@GetMapping("/reservations/{Res_Id}")
+public ResponseEntity<Reservation> getReservationtById(@PathVariable Integer Res_Id){
+    Reservation reservation = reservationRepository.findById(Res_Id)
+     .orElseThrow(() -> new ResourceNotFoundException(" Reservation  not found for this id :: " + Res_Id));
+    return ResponseEntity.ok(reservation);
+}*/
