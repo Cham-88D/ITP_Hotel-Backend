@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,7 +20,7 @@ import com.itp.hotel.exception.ResourceNotFoundException;
 import com.itp.hotel.model.Event;
 import com.itp.hotel.repository.EventRepository;
 
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/v1/")
 
@@ -52,7 +53,7 @@ public class EventController {
 	        Event event = eventRepository.findById(Event_Id)
 	        .orElseThrow(() -> new ResourceNotFoundException("Event not found for this id :: " + Event_Id));
 
-	        event.setEvent_Id(eventDetails.getEvent_Id());
+	    
 	        event.setType(eventDetails.getType());
 	        event.setPackage(eventDetails.getPackage());
 	        event.setDescription(eventDetails.getDescription());
