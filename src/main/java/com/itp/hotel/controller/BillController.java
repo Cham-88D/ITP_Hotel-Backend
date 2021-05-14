@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.itp.hotel.model.Barroom_Order;
 import com.itp.hotel.model.Beverage;
 import com.itp.hotel.model.Bill;
+import com.itp.hotel.model.ResourceNotFoundException;
 import com.itp.hotel.service.Barroom_OrderService;
 import com.itp.hotel.service.BeverageService;
 import com.itp.hotel.service.BillService;
@@ -53,6 +55,15 @@ public class BillController {
 			billObj.setTotal_after_discount(bill.getTotal_after_discount());
 			try {
 				billService.save(billObj);
+				try {
+
+					order.setBarroom_order_ID(orderId);
+					order.setOrderDate(order.getOrderDate());
+					order.setStatus("completed");
+					barroom_OrderService.save(order);
+				}catch(Exception e) {
+					throw e;
+				}
 				return ResponseEntity.ok(true);
 			}catch(Exception e) {
 				throw e;
