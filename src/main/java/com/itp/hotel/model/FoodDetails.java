@@ -22,11 +22,11 @@ public class FoodDetails {
 	@Column(name = "Food_Type",length=30)
 	private String Food_Type;
 	
-	@Column(name = "Availability",length=30)
-	private String Availability;
+	@Column(name = "Availability")
+	private int Availability;
 	
 	@Column(name = "Unit_Price")
-	private Double Unit_Price;
+	private String Unit_Price;
 	
 	
 	
@@ -36,7 +36,7 @@ public class FoodDetails {
 
 
 
-	public FoodDetails(int food_Id, String food_Name, String food_Type, String availability, Double unit_Price) {
+	public FoodDetails(int food_Id, String food_Name, String food_Type, int availability, String unit_Price) {
 		super();
 		Food_Id = food_Id;
 		Food_Name = food_Name;
@@ -65,13 +65,13 @@ public class FoodDetails {
 
 
 
-	public void setAvailability(String availability) {
+	public void setAvailability(int availability) {
 		Availability = availability;
 	}
 
 
 
-	public void setUnit_Price(Double unit_Price) {
+	public void setUnit_Price(String unit_Price) {
 		Unit_Price = unit_Price;
 	}
 
@@ -95,13 +95,13 @@ public class FoodDetails {
 
 
 
-	public String getAvailability() {
+	public int getAvailability() {
 		return Availability;
 	}
 
 
 
-	public Double getUnit_Price() {
+	public String getUnit_Price() {
 		return Unit_Price;
 	}
 

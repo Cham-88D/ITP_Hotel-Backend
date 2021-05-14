@@ -24,8 +24,8 @@ public class Employee extends  User {
     private List <Payroll> payroll;
 	
 	
-	@OneToMany(mappedBy = "employee",cascade = CascadeType.ALL) 
-    private List <FoodCount> foodCount;
+//	@OneToMany(mappedBy = "employee",cascade = CascadeType.ALL) 
+//    private List <FoodCount> foodCount;
 	
 	@OneToMany(mappedBy = "employee",cascade = CascadeType.ALL) 
     private List <Supplier> supplier;
@@ -65,13 +65,13 @@ public class Employee extends  User {
 
 
 	public Employee(Long userId, String username, String email, String password, String role,
-			List<MonthlyAttendance> monthlyAttendance, List<Payroll> payroll, List<FoodCount> foodCount,
+			List<MonthlyAttendance> monthlyAttendance, List<Payroll> payroll, /*List<FoodCount> foodCount,*/
 			List<Supplier> supplier, List<PurchasedItemDetail> purchasedItemDetail, String nic, String fName,
 			String lName, String address, LocalDate dateOfBirth, LocalDate startDate, String phone) {
 		super(userId, username, email, password, role);
 		this.monthlyAttendance = monthlyAttendance;
 		this.payroll = payroll;
-		this.foodCount = foodCount;
+		//this.foodCount = foodCount;
 		this.supplier = supplier;
 		this.purchasedItemDetail = purchasedItemDetail;
 		this.nic = nic;
@@ -94,9 +94,9 @@ public class Employee extends  User {
 	}
 
 
-	public void setFoodCount(List<FoodCount> foodCount) {
-		this.foodCount = foodCount;
-	}
+//	public void setFoodCount(List<FoodCount> foodCount) {
+//		this.foodCount = foodCount;
+//	}
 
 
 	public void setSupplier(List<Supplier> supplier) {
@@ -159,9 +159,9 @@ public class Employee extends  User {
 	}
 
 
-	public List<FoodCount> getFoodCount() {
-		return foodCount;
-	}
+//	public List<FoodCount> getFoodCount() {
+//		return foodCount;
+//	}
 
 
 	public List<Supplier> getSupplier() {

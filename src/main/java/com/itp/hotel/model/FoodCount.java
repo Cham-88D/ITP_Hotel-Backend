@@ -24,7 +24,8 @@ public class FoodCount {
 	
 
 	@JoinColumn(name = "user_Id")
-	@ManyToOne
+	//@ManyToOne
+	@OneToOne
     private Employee employee ;
      
 	

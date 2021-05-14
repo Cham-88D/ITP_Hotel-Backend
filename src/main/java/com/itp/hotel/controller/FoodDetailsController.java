@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +22,7 @@ import com.itp.hotel.model.FoodDetails;
 import com.itp.hotel.repository.FoodDetailsRepository;
 import com.itp.hotel.exception.ResourceNotFoundException;
 
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/v1")
 public class FoodDetailsController {
@@ -53,7 +54,7 @@ public class FoodDetailsController {
 		FoodDetails foodDetails1 = foodRepository.findById(Food_Id)
         .orElseThrow(() -> new ResourceNotFoundException("Food detailt found for this id :: " + Food_Id));
 
-		foodDetails1.setFood_Id(foodDetails.getFood_Id());
+		//foodDetails1.setFood_Id(foodDetails.getFood_Id());
 		foodDetails1.setFood_Name(foodDetails.getFood_Name());
 		foodDetails1.setFood_Type(foodDetails.getFood_Type());
 		foodDetails1.setUnit_Price(foodDetails.getUnit_Price());
