@@ -73,5 +73,16 @@ public class BillController {
 		}
 	}
 
+	// view all
+		@GetMapping("/bills")
+		public ResponseEntity<List> getAllBills() {
+			try {
+				//Barroom_Order order = barroom_OrderService.get(orderId);
+				List obj = billService.getAllBills();
+				return ResponseEntity.ok(obj);
+			} catch (Exception e) {
+				throw e;
+			}
+		}
 	
 }

@@ -14,4 +14,7 @@ public interface BillRepository extends JpaRepository<Bill, Long> {
 
 	@Query("SELECT b FROM Bill b WHERE barroom_Order=?1")
 	public List<Bill> getBillDetailsByOrderId(Barroom_Order bo);
+	
+	@Query("SELECT b.barroom_Order,b.discount_per_order,b.discounted_price,b.total_after_discount FROM Bill b")
+	public List getAllBills();
 }

@@ -26,4 +26,8 @@ public class BillService {
 	public List<Bill> getBillDetailsByOrderId(Barroom_Order bo){
 		return repo.getBillDetailsByOrderId(bo);
 	}
+	
+	public List getAllBills(){
+		return repo.getAllBills();
+	}
 }
