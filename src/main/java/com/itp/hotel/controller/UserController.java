@@ -37,18 +37,13 @@ public class UserController {
 	}
 	
 	@PostMapping("/isUserExist")
-	public ResponseEntity checkUserUniqueness(@RequestBody String username) {
+	public ResponseEntity checkUserExists(@RequestBody String username) {
 		try {
 			User user = userService.getUserByUsername(username);
-			//List<Object> ob = new ArrayList();
 			if(user != null) {
-				//ob.add(user);
-				//ob.add(true);
-				return ResponseEntity.ok(false);
-			}else {
-				//ob.add(null);
-				//ob.add(false);
 				return ResponseEntity.ok(true);
+			}else {
+				return ResponseEntity.ok(false);
 			}
 		}catch(Exception e) {
 			throw e;
@@ -61,7 +56,7 @@ public class UserController {
 		try {
 			User u = userService.getUserByUsername(username);
 			if(u == null) {
-				return ResponseEntity.ok("Email doesn't exists!");
+				return ResponseEntity.ok("Username doesn't exists!");
 			}else {
 				if(u.getPassword().equals( user.getPassword())) {
 					return ResponseEntity.ok(u);
