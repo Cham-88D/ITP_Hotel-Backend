@@ -1,10 +1,16 @@
 package com.itp.hotel.model;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -27,6 +33,9 @@ public class FoodDetails {
 	
 	@Column(name = "Unit_Price")
 	private String Unit_Price;
+	
+	@OneToMany(mappedBy = "foodDetails")
+	private Set<FoodCount> foodCounts;
 	
 	
 	

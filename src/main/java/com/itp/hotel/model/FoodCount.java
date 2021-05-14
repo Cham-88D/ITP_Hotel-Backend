@@ -27,10 +27,10 @@ public class FoodCount {
 	//@ManyToOne
 	@OneToOne
     private Employee employee ;
-     
+    
 	
-	@OneToOne(cascade =CascadeType.ALL) 
-    @JoinColumn(name = "food_id", referencedColumnName = "food_Id")
+	@ManyToOne
+	@JoinColumn(name="food_detail_id", nullable=false)
     private FoodDetails foodDetails;
 	
 	@Column(name = "Name")

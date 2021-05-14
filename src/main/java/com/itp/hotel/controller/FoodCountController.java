@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.itp.hotel.model.FoodCount;
 import com.itp.hotel.model.FoodDetails;
@@ -30,6 +32,9 @@ public class FoodCountController {
 	@Autowired
 	private FoodCountRepository foodCountRepository;
 	
+	@Autowired
+	private FoodDetailsRepository foodDetailsRepository;
+	
 	
 	
 	//get all foodCount
@@ -41,24 +46,26 @@ public class FoodCountController {
 	//create foodCount rest api
 		@PostMapping("/foodCount")
 		public FoodCount createFoodCount(@RequestBody FoodCount foodCount) {
+			FoodDetails foodDetails = foodDetailsRepository.findByName(foodCount.getName());
+			foodCount.setFoodDetails(foodDetails);
+			int count = Integer.parseInt(foodCount.getQuantity());
+			int currentCount = foodDetails.getAvailability();
+			if(foodCount.getType().equals("Consumed")) {
+				if(currentCount<count) {
+		           throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Count Not Available");
+				}else {
+					foodDetails.setAvailability(currentCount-count);
+				}
+				
+			}else {
+				foodDetails.setAvailability(currentCount+count);
+			}
+			foodDetailsRepository.save(foodDetails);
 			return foodCountRepository.save(foodCount);
 		}
 
 	
-////	public FoodCount createFoodCount(@RequestBody FoodCount foodCount) {
-////		return foodCountRepository.save(foodCount);
-////	}
-//	public void createFoodCount(@RequestBody FoodCount foodCount) {
-//		String food_name = foodCount.getName();
-//		System.out.println(food_name);
-//		FoodDetails f_id = foodRepository.findByName(food_name);
-////		FoodDetails foodDetails1 = foodRepository.
-//		System.out.println(f_id.getFood_Id());
-//		//FoodDetails foodDetails1 = foodRepository.findById(Food_Id);
-//		//return foodCountRepository.save(foodCount);
-//		return;
-//		
-//	}
+
 	
 	//get foodCount by id rest api
 	@GetMapping("/foodCount/{count_id}")
@@ -76,8 +83,20 @@ public class FoodCountController {
 		FoodCount foodCount1 = foodCountRepository.findById(count_id)
         .orElseThrow(() -> new ResourceNotFoundException("Food Count found for this id :: " + count_id));
 
-		
+		int count = Integer.parseInt(foodCount.getQuantity());
+		int currentCount = foodCount1.getFoodDetails().getAvailability();
+		if(foodCount.getType().equals("Consumed")) {
+			if(currentCount<count) {
+	           throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Count Not Available");
+			}else {
+				foodCount1.getFoodDetails().setAvailability(currentCount-count);
+			}
+			
+		}else {
+			foodCount1.getFoodDetails().setAvailability(currentCount+count);
+		}
 		foodCount1.setName(foodCount.getName());
+		
 		foodCount1.setQuantity(foodCount.getQuantity());
 		foodCount1.setDate(foodCount.getDate());
 		foodCount1.setType(foodCount.getType());
