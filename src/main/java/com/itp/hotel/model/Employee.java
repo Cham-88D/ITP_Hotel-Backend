@@ -27,12 +27,12 @@ public class Employee extends  User {
 	@OneToMany(mappedBy = "employee",cascade = CascadeType.ALL) 
     private List <FoodCount> foodCount;
 	
-	@OneToMany(mappedBy = "employee",cascade = CascadeType.ALL) 
-    private List <Supplier> supplier;
+//	@OneToMany(mappedBy = "employee",cascade = CascadeType.ALL) 
+//    private List <Supplier> supplier;
 	
 	
-	@OneToMany(mappedBy = "employee",cascade = CascadeType.ALL) 
-    private List <PurchasedItemDetail> purchasedItemDetail;
+//	@OneToMany(mappedBy = "employee",cascade = CascadeType.ALL) 
+//    private List <PurchasedItemDetail> purchasedItemDetail;
 	    
 	@Column(name="nic", length=20, nullable=false)
 	private String nic;
@@ -66,14 +66,14 @@ public class Employee extends  User {
 
 	public Employee(Long userId, String username, String email, String password, String role,
 			List<MonthlyAttendance> monthlyAttendance, List<Payroll> payroll, List<FoodCount> foodCount,
-			List<Supplier> supplier, List<PurchasedItemDetail> purchasedItemDetail, String nic, String fName,
+			/*List<Supplier> supplier,*//* List<PurchasedItemDetail> purchasedItemDetail,*/ String nic, String fName,
 			String lName, String address, LocalDate dateOfBirth, LocalDate startDate, String phone) {
 		super(userId, username, email, password, role);
 		this.monthlyAttendance = monthlyAttendance;
 		this.payroll = payroll;
 		this.foodCount = foodCount;
-		this.supplier = supplier;
-		this.purchasedItemDetail = purchasedItemDetail;
+//		this.supplier = supplier;
+//		this.purchasedItemDetail = purchasedItemDetail;
 		this.nic = nic;
 		this.fName = fName;
 		this.lName = lName;
@@ -99,14 +99,14 @@ public class Employee extends  User {
 	}
 
 
-	public void setSupplier(List<Supplier> supplier) {
-		this.supplier = supplier;
-	}
+//	public void setSupplier(List<Supplier> supplier) {
+//		this.supplier = supplier;
+//	}
 
 
-	public void setPurchasedItemDetail(List<PurchasedItemDetail> purchasedItemDetail) {
-		this.purchasedItemDetail = purchasedItemDetail;
-	}
+//	public void setPurchasedItemDetail(List<PurchasedItemDetail> purchasedItemDetail) {
+//		this.purchasedItemDetail = purchasedItemDetail;
+//	}
 
 
 	public void setNic(String nic) {
@@ -163,15 +163,14 @@ public class Employee extends  User {
 		return foodCount;
 	}
 
+//	public List<Supplier> getSupplier() {
+//		return supplier;
+//	}
 
-	public List<Supplier> getSupplier() {
-		return supplier;
-	}
 
-
-	public List<PurchasedItemDetail> getPurchasedItemDetail() {
-		return purchasedItemDetail;
-	}
+//	public List<PurchasedItemDetail> getPurchasedItemDetail() {
+//		return purchasedItemDetail;
+//	}
 
 
 	public String getNic() {
