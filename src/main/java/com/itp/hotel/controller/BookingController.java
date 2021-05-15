@@ -52,16 +52,16 @@ public class BookingController {
 	        .orElseThrow(() -> new ResourceNotFoundException("Booking not found for this id :: " + Booking_Id));
 
 	    	//booking.setBooking_Id(booking.getBooking_Id());
-	    	booking.setDate(booking.getDate());
-	    	booking.setCus_Name(booking.getCus_Name());
-	    	booking.setCus_Phone_No(booking.getCus_Phone_No());
-	    	booking.setNum_Participants(booking.getNum_Participants());
-	    	booking.setBooking_Type(booking.getBooking_Type());
-	    	booking.setBooking_Package(booking.getBooking_Package());
-	    	booking.setTime_In(booking.getTime_In());
-	    	booking.setTime_Out(booking.getTime_Out());
+	    	booking.setDate(bookingDetails.getDate());
+	    	booking.setCus_Name(bookingDetails.getCus_Name());
+	    	booking.setCus_Phone_No(bookingDetails.getCus_Phone_No());
+	    	booking.setNum_Participants(bookingDetails.getNum_Participants());
+	    	booking.setBooking_Type(bookingDetails.getBooking_Type());
+	    	booking.setBooking_Package(bookingDetails.getBooking_Package());
+	    	booking.setTime_In(bookingDetails.getTime_In());
+	    	booking.setTime_Out(bookingDetails.getTime_Out());
 	        
-	        Booking updatedBooking = bookingRepository.save(booking);
+	        final Booking updatedBooking = bookingRepository.save(booking);
 	        return ResponseEntity.ok(updatedBooking);
 	    } 
 	    
