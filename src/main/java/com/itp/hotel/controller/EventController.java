@@ -47,6 +47,7 @@ public class EventController {
 	        return eventRepository.save(event);
 	    }
 	    
+	    
 	    @PutMapping("/events/{Event_Id}")
 	    public ResponseEntity<Event> updateEvent(@PathVariable(value = "Event_Id") Integer Event_Id,
 	         @Valid @RequestBody Event eventDetails) throws ResourceNotFoundException {
