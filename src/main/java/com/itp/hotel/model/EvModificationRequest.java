@@ -23,12 +23,12 @@ public class EvModificationRequest {
 	
 		@OneToOne/*(cascade =CascadeType.ALL)*/ 
 	    @JoinColumn(name = "user_id", referencedColumnName = "user_Id")
-	    User use;
+	    private User use;
 
-		
-		@OneToOne/*(cascade =CascadeType.ALL)*/
-	    @JoinColumn(name = "booking_Id", referencedColumnName = "booking_Id")
-	    Booking booking;
+//		
+//		@OneToOne/*(cascade =CascadeType.ALL)*/
+//	    @JoinColumn(name = "booking_Id", referencedColumnName = "booking_Id")
+//	    private Booking booking;
 		
 		
 		
@@ -82,10 +82,10 @@ public class EvModificationRequest {
 			this.customer = c;
 		}*/
 
-		public void setBooking(Booking c) {
-
-			this.booking=c;
-		}
+//		public void setBooking(Booking c) {
+//
+//			this.booking=c;
+//		}
 
 		
 		
@@ -134,9 +134,9 @@ public class EvModificationRequest {
 
 
 
-		public Long getBooking() {
-			return booking.getBooking_Id();
-		}
+//		public Long getBooking() {
+//			return booking.getBooking_Id();
+//		}
 
 
 
