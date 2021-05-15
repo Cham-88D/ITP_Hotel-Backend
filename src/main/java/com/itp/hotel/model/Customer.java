@@ -66,7 +66,6 @@ public class Customer extends  User {
 
 
 
-
 	public void setNic(String nic) {
 		this.nic = nic;
 	}
