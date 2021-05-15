@@ -23,7 +23,6 @@ import com.itp.hotel.repository.BookingRepository;
 @RestController
 @RequestMapping("/api/v1/")
 
-
 public class BookingController {
 	@Autowired
     private BookingRepository bookingRepository;
