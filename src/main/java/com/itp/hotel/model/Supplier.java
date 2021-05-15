@@ -1,19 +1,24 @@
 package com.itp.hotel.model;
 
 
-import java.util.List;
+//import java.util.List;
 
-import javax.persistence.CascadeType;
+
+
+
+
+//import javax.persistence.CascadeType;
 import javax.persistence.Column;
 
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+//import javax.persistence.ManyToOne;
+//import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,16 +28,15 @@ public class Supplier {
 	
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "sid")
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int Sid;
 	
-	@JoinColumn(name = "user_Id")
-	@ManyToOne
-    private Employee employee ;
+	@OneToOne
+	@JoinColumn(name = "user_Id", referencedColumnName = "user_Id")
+	private Employee employee ;
 	
-	@OneToMany(mappedBy = "supplier",cascade = CascadeType.ALL) 
-    private List <Item> item;
+	//@OneToMany(mappedBy = "supplier",cascade = CascadeType.ALL) 
+   // private List <Item> item;
 	
 	@Column(name = "S_Name",length=80)
 	private String Name;
@@ -49,6 +53,8 @@ public class Supplier {
 	@Column(name= "NIC",length=15)
 	private String Nic;
 	
+	@Column(name= "Password",length=15)
+	private String Password;
 
 	
 	public Supplier() {
@@ -57,17 +63,19 @@ public class Supplier {
 
 
 
-	public Supplier(int sid, Employee employee, List<Item> item, String name, String category, String email,
-			String phone, String nic) {
+	public Supplier(int sid, Employee employee, /*List<Item> item,*/ String name, String category, String email,
+			String phone, String nic,String password) {
 		super();
 		Sid = sid;
 		this.employee = employee;
-		this.item = item;
+		//this.item = item;
 		Name = name;
 		Category = category;
 		Email = email;
 		Phone = phone;
 		Nic = nic;
+		Password = password;
+		
 	}
 
 
@@ -84,9 +92,9 @@ public class Supplier {
 
 
 
-	public void setItem(List<Item> item) {
-		this.item = item;
-	}
+//	public void setItem(List<Item> item) {
+//		this.item = item;
+//	}
 
 
 
@@ -117,6 +125,9 @@ public class Supplier {
 	public void setNic(String nic) {
 		Nic = nic;
 	}
+	public void setPassword(String password) {
+		Password = password;
+	}
 
 
 
@@ -132,9 +143,9 @@ public class Supplier {
 
 
 
-	public List<Item> getItem() {
-		return item;
-	}
+//	public List<Item> getItem() {
+//		return item;
+//	}
 
 
 
@@ -164,6 +175,10 @@ public class Supplier {
 
 	public String getNic() {
 		return Nic;
+	}
+	
+	public String getPassword() {
+		return Password;
 	}
 	
 
