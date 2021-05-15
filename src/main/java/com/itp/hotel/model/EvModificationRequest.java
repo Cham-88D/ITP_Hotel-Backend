@@ -128,7 +128,6 @@ public class EvModificationRequest {
 		}
 
 
-
 		//public Long getCustomer() {
 		//	return customer.getId();
 	//	}
