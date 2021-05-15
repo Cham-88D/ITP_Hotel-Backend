@@ -24,6 +24,7 @@ import com.itp.hotel.model.ResMenuItem;
 
 import com.itp.hotel.exception.*;
 import com.itp.hotel.repository.ResMenuItemRepository;
+import com.itp.hotel.service.ResMenuItemService;
 
 @CrossOrigin(origins ="http://localhost:3000")
 
@@ -35,13 +36,21 @@ public class Res_Menu_Item_Controller {
 	
 	@Autowired
 	private ResMenuItemRepository res_menu_item_repository;
-	 
+	@Autowired
+	private ResMenuItemService resMenuService;
+	
 	//get all menu items
 	@GetMapping("/res_menu_item")
 	public List<ResMenuItem> getRes_Menu_items(){
-		return res_menu_item_repository.findAll();
+		return resMenuService.listAll();
 	}
 	
+	//get all menu items
+		@GetMapping("/menu/{id}")
+		public ResponseEntity getMenuItemById(@PathVariable Long id){
+			return ResponseEntity.ok(resMenuService.getById(id));
+		}
+		
 	/*
 	@GetMapping("/res_menu_item/{menuItemType}")
 	public List<Res_Menu_item> getRes_Menu_items_by_type(@PathVariable String menuItemType){

@@ -13,10 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.itp.hotel.model.OrderMenuItem;
-
+import com.itp.hotel.model.ResMenuItem;
+import com.itp.hotel.model.ResOrder;
 import com.itp.hotel.exception.*;
 
 import com.itp.hotel.repository.OrderMenuItemRepository;
+import com.itp.hotel.service.OrderMenuItemService;
+import com.itp.hotel.service.ResOrderService;
 
 
 
@@ -28,29 +31,36 @@ public class order_Menu_Item_Controller {
 	
 	@Autowired
 	private OrderMenuItemRepository  order_Menu_Item_repository;
-	 
+	@Autowired
+	private OrderMenuItemService orderMenuItemService;
+	@Autowired
+	private ResOrderService resOrderService;
+	
 	//get all menu items
 	@GetMapping("/order_menu_item")
 	public List<OrderMenuItem> getRes_Menu_items(){
 		return order_Menu_Item_repository.findAll();
 	}
 	
-	//insert
 	@PostMapping("/order_menu_item")
-	public OrderMenuItem insertorder_Menu_item(@RequestBody   OrderMenuItem order_Menu_item){
-		return order_Menu_Item_repository.save(order_Menu_item);
+	public ResponseEntity insert(@RequestBody OrderMenuItem o) {
+		try {
+			orderMenuItemService.save(o);
+			return ResponseEntity.ok("Saved order line successfully!");
+		} catch (Exception e) {
+			throw e;
+		}
 	}
 	
-	
 	@GetMapping("/order_menu_item/{id}")
-	public ResponseEntity<OrderMenuItem> getMenu_item_by_id(@PathVariable Long id) {
-			
-		OrderMenuItem order_menu_item = order_Menu_Item_repository.findById(id)
-				.orElseThrow(()-> new ResourceNotFoundException("order menu item not exit with this key: "+id));
-		return ResponseEntity.ok(order_menu_item);
-		
-		
-		
+	public ResponseEntity getMenuOrdersByOrderId(@PathVariable Long id) {
+		try {
+			ResOrder ro = resOrderService.get(id);
+			List<Object> orderItems = orderMenuItemService.getMenuOrdersByOrderId(ro);
+			return ResponseEntity.ok(orderItems);
+		} catch (Exception e) {
+			throw e;
+		}
 	}
 	
 

@@ -1,7 +1,10 @@
 package com.itp.hotel.model;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -38,15 +41,15 @@ public class ResMenuItem {
 
 	
 
-	@OneToMany(mappedBy = "res")
-	private List<OrderMenuItem> order_Menu_Item;
+	@OneToMany(mappedBy = "res", cascade = CascadeType.ALL)
+	private Set<OrderMenuItem> order_Menu_Item = new HashSet();
 
 	public ResMenuItem () {
 		super();
 	}
 
 	public ResMenuItem(long menu_item_id, String menuItemType, String menuItemName, double unitPrice,
-			String description, int discount, List<OrderMenuItem> order_Menu_Item) {
+			String description, int discount) {
 		super();
 		this.menu_item_id = menu_item_id;
 		this.menuItemType = menuItemType;
@@ -54,7 +57,7 @@ public class ResMenuItem {
 		this.unitPrice = unitPrice;
 		this.description = description;
 		this.discount = discount;
-		this.order_Menu_Item = order_Menu_Item;
+		//this.order_Menu_Item = order_Menu_Item;
 	}
 
 	public void setMenu_item_id(long menu_item_id) {
@@ -83,7 +86,7 @@ public class ResMenuItem {
 
 
 
-	public void setOrder_Menu_Item(List<OrderMenuItem> order_Menu_Item) {
+	public void setOrder_Menu_Item(Set<OrderMenuItem> order_Menu_Item) {
 		this.order_Menu_Item = order_Menu_Item;
 	}
 
@@ -113,7 +116,7 @@ public class ResMenuItem {
 
 
 
-	public List<OrderMenuItem> getOrder_Menu_Item() {
+	public Set<OrderMenuItem> getOrder_Menu_Item() {
 		return order_Menu_Item;
 	}
 
