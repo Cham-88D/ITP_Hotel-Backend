@@ -52,7 +52,7 @@ public class Ev_Modification_RequestController {
 	    }
 	    
 	    @PostMapping("/ev_Modification_Requests")
-	    public EvModificationRequest createEv_Modification_Request( @RequestBody EvModificationRequest ev_Modification_Request) {
+	    public EvModificationRequest createEv_Modification_Request(@Valid @RequestBody EvModificationRequest ev_Modification_Request) {
 	        return ev_Modification_RequestRepository.save(ev_Modification_Request);
 	    }
 	    
