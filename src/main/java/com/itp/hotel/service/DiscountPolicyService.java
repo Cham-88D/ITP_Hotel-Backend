@@ -29,4 +29,8 @@ public class DiscountPolicyService {
 	public void delete(long id) {
 		repo.deleteById(id);
 	}
+	
+	public List<DiscountPolicy> getApplicablePolicies(float currentTotal){
+		return repo.getApplicablePolicies(currentTotal);
+	}
 }

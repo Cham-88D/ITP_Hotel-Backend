@@ -30,13 +30,23 @@ public class Discount_Policy_Controller {
 	
 	// view all
 		@GetMapping("/policies")
-		public ResponseEntity<List<DiscountPolicy>> getAllBeverage() {
+		public ResponseEntity<List<DiscountPolicy>> getAllPolicies() {
 			try {
 				return ResponseEntity.ok(discountPolicyService.listAll());
 			}catch(Exception e) {
 				throw e;
 			}
 		}
+		
+		@GetMapping("/policies-applicable/{total}")
+		public ResponseEntity<List<DiscountPolicy>> getApplicablePolices(@PathVariable float total) {
+			try {
+				return ResponseEntity.ok(discountPolicyService.getApplicablePolicies(total));
+			}catch(Exception e) {
+				throw e;
+			}
+		}
+		
 		
 		// insert beverage items
 		@PostMapping("/policies")
