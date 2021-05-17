@@ -2,6 +2,7 @@ package com.itp.hotel.model;
 
 import java.util.List;
 
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,12 +20,12 @@ public class Customer extends  User {
 	private static final long serialVersionUID = 1L;
 	
 	
-	@OneToMany(mappedBy = "customer",cascade = CascadeType.ALL) 
-    private List <Reservation> reservation;
+//	@OneToMany(mappedBy = "customer",cascade = CascadeType.ALL) 
+//    private List <Reservation> reservation;
 	
-	@OneToMany(mappedBy = "customers",cascade = CascadeType.ALL) 
-    private List <Payment> payment;
-	
+//	@OneToMany(mappedBy = "customers",cascade = CascadeType.ALL) 
+//    private List <Payment> payment;
+//	
 	
 	@OneToMany(mappedBy = "customer",cascade = CascadeType.ALL) 
     private List <Booking> booking;
@@ -50,11 +51,11 @@ public class Customer extends  User {
 
 
 	public Customer(Long userId, String username, String email, String password, String role,
-			List<Reservation> reservation, List<Payment> payment, List<Booking> booking, String nic, String fName,
+			/*List<Reservation> reservation, List<Payment> payment,*/ List<Booking> booking, String nic, String fName,
 			String lName, String phoneNum) {
 		super(userId, username, email, password, role);
-		this.reservation = reservation;
-		this.payment = payment;
+//		this.reservation = reservation;
+//		this.payment = payment;
 		this.booking = booking;
 		this.nic = nic;
 		this.fName = fName;
@@ -63,14 +64,14 @@ public class Customer extends  User {
 	}
 
 
-	public void setReservation(List<Reservation> reservation) {
-		this.reservation = reservation;
-	}
+//	public void setReservation(List<Reservation> reservation) {
+//		this.reservation = reservation;
+//	}
 
 
-	public void setPayment(List<Payment> payment) {
-		this.payment = payment;
-	}
+//	public void setPayment(List<Payment> payment) {
+//		this.payment = payment;
+//	}
 
 
 	public void setBooking(List<Booking> booking) {
@@ -103,14 +104,14 @@ public class Customer extends  User {
 	}
 
 
-	public List<Reservation> getReservation() {
-		return reservation;
-	}
+//	public List<Reservation> getReservation() {
+//		return reservation;
+//	}
 
-
-	public List<Payment> getPayment() {
-		return payment;
-	}
+//
+//	public List<Payment> getPayment() {
+//		return payment;
+//	}
 
 
 	public List<Booking> getBooking() {
