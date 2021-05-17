@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "hotel.app.jwtSecret",
+      "type": "java.lang.String",
+      "description": "Description for hotel.app.jwtSecret."
+  }
+] }
