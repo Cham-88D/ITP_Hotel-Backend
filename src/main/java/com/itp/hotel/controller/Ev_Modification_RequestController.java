@@ -35,15 +35,6 @@ public class Ev_Modification_RequestController {
 	        return ev_Modification_RequestRepository.findAll();
 	    }
 	    
-	    /*@GetMapping("/ev_Modification_Requests/{Ev_M_ID}")
-	    public ResponseEntity<EvModificationRequest> getEv_Modification_RequestById(@PathVariable(value = "Ev_M_ID") Integer Ev_M_ID)
-	        throws ResourceNotFoundException {
-	    	EvModificationRequest ev_Modification_Request = ev_Modification_RequestRepository.findById(Ev_M_ID)
-	    			.orElseThrow(() -> new ResourceNotFoundException("Ev_Modification_Request not found for this id :: " + Ev_M_ID));
-	        return ResponseEntity.ok().body(ev_Modification_Request);
-	    }*/
-	 
-	 
 	    @GetMapping("/ev_Modification_Requests/{Ev_M_ID}")
 	    public ResponseEntity<EvModificationRequest> getEv_Modification_RequestById(@PathVariable Integer Ev_M_ID){
 	    	EvModificationRequest ev_Modification_Request = ev_Modification_RequestRepository.findById(Ev_M_ID)

@@ -51,6 +51,7 @@ public class BookingController {
 	    	Booking booking = bookingRepository.findById(Booking_Id)
 	        .orElseThrow(() -> new ResourceNotFoundException("Booking not found for this id :: " + Booking_Id));
 
+
 	    	//booking.setBooking_Id(booking.getBooking_Id());
 	    	booking.setDate(bookingDetails.getDate());
 	    	booking.setCus_Name(bookingDetails.getCus_Name());
@@ -62,6 +63,7 @@ public class BookingController {
 	    	booking.setTime_Out(bookingDetails.getTime_Out());
 	        
 	        final Booking updatedBooking = bookingRepository.save(booking);
+
 	        return ResponseEntity.ok(updatedBooking);
 	    } 
 	    

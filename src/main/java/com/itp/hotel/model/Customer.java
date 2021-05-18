@@ -2,11 +2,10 @@ package com.itp.hotel.model;
 
 import java.util.List;
 
-//import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-//import javax.persistence.OneToMany;
+
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
@@ -20,19 +19,6 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 public class Customer extends  User {
 
 	private static final long serialVersionUID = 1L;
-	
-	
-//	@OneToMany(mappedBy = "customer",cascade = CascadeType.ALL ) 
-//    private List <Reservation> reservation;
-//	
-//	@OneToMany(mappedBy = "customers",cascade = CascadeType.ALL ) 
-//    private List <Payment> payment;
-//	
-//	
-//	@OneToMany(targetEntity=Booking.class,cascade = CascadeType.ALL,fetch = FetchType.EAGER) 
-//	@JsonBackReference
-//    private List <Booking> booking;
-//	
 	
 	@Column(name="nic", length=20, nullable=false)
 	private String nic;
@@ -62,9 +48,6 @@ public class Customer extends  User {
 		this.lName = lName;
 		this.phoneNum = phoneNum;
 	}
-
-
-
 
 	public void setNic(String nic) {
 		this.nic = nic;

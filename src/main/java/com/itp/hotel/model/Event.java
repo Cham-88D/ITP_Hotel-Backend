@@ -99,6 +99,23 @@ import javax.persistence.Table;
 @Table(name = "event")
 public class Event {
 	
+<<<<<<< HEAD
+=======
+}
+
+
+/*import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "event")
+public class Event {
+	
+>>>>>>> branch 'EventBookingManagement' of https://github.com/Cham-88D/ITP_Hotel-Backend.git
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Event_Id")

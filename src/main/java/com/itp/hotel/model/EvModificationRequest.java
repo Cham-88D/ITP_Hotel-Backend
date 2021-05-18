@@ -24,12 +24,6 @@ public class EvModificationRequest {
 		@OneToOne/*(cascade =CascadeType.ALL)*/ 
 	    @JoinColumn(name = "user_id", referencedColumnName = "user_Id")
 	    private User use;
-
-//		
-//		@OneToOne/*(cascade =CascadeType.ALL)*/
-//	    @JoinColumn(name = "booking_Id", referencedColumnName = "booking_Id")
-//	    private Booking booking;
-		
 		
 		
 		@Column(name = "Reason",length=254)
@@ -64,8 +58,6 @@ public class EvModificationRequest {
 			Days_Remain_Booking = days_Remain_Booking;
 		}
 
-
-
 		public void setEv_M_ID(int ev_M_ID) {
 			Ev_M_ID = ev_M_ID;
 		}
@@ -74,35 +66,15 @@ public class EvModificationRequest {
 
 			this.use = c;
 		}
-        
-		
-	/*	
-		public void setCustomer(Customer c) {
-
-			this.customer = c;
-		}*/
-
-//		public void setBooking(Booking c) {
-//
-//			this.booking=c;
-//		}
-
 		
 		
 		public void setId(Long c) {
 			this.use.setId(c);
 		}
 
-
-
-		
-
-
-
 		public void setReason(String reason) {
 			Reason = reason;
 		}
-
 
 
 		public void setMessage(String message) {
@@ -122,22 +94,9 @@ public class EvModificationRequest {
 		}
 
 
-
 		public int getEv_M_ID() {
 			return Ev_M_ID;
 		}
-
-
-		//public Long getCustomer() {
-		//	return customer.getId();
-	//	}
-
-
-
-//		public Long getBooking() {
-//			return booking.getBooking_Id();
-//		}
-
 
 
 		public String getReason() {
