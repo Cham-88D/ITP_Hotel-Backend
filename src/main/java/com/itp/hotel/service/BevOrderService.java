@@ -1,5 +1,7 @@
 package com.itp.hotel.service;
 
+import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,8 +71,8 @@ public class BevOrderService {
 		return repo.getAllBevOrdersGroupedByOrderId(); 
 	}
 	
-	public List<Object> getBevOrdersGroupedByOrderIdFilterByStatus(String status){
-		return repo.getBevOrdersGroupedByOrderIdFilterByStatus(status); 
+	public List<Object> getBevOrdersGroupedByOrderIdFilterByStatus(String status, String orderDate){
+		return repo.getBevOrdersGroupedByOrderIdFilterByStatus(status,orderDate); 
 	}
 	
 }

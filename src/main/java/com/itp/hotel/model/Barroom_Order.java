@@ -31,6 +31,7 @@ public class Barroom_Order {
 	 * private Barroom_Order_comp id;
 	 */
 
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long barroom_order_ID;
@@ -49,7 +50,7 @@ public class Barroom_Order {
 
 	// @Temporal(TemporalType.DATE)
 	@Column(name = "orderDate")
-	private LocalDateTime orderDate = LocalDateTime.now();
+	private String orderDate;
 
 	@Column(name = "status")
 	private String status;
@@ -70,7 +71,7 @@ public class Barroom_Order {
 		super();
 	}
 
-	public Barroom_Order(LocalDateTime orderDate, String status) {
+	public Barroom_Order(String orderDate, String status) {
 		super();
 		this.orderDate = orderDate;
 		this.status = status;
@@ -99,11 +100,11 @@ public class Barroom_Order {
 		this.barroom_order_ID = barroom_order_ID;
 	}
 
-	public LocalDateTime getOrderDate() {
+	public String getOrderDate() {
 		return orderDate;
 	}
 
-	public void setOrderDate(LocalDateTime orderDate) {
+	public void setOrderDate(String orderDate) {
 		this.orderDate = orderDate;
 	}
 

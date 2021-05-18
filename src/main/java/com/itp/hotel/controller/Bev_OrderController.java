@@ -1,5 +1,8 @@
 package com.itp.hotel.controller;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -60,12 +63,12 @@ public class Bev_OrderController {
 		}
 	}
 	
-	@GetMapping("/bev-order/view")
-	public ResponseEntity getAllBevOrdersGroupedByOrderId (@RequestParam String status){
+	@PostMapping("/bev-order/view")
+	public ResponseEntity getAllBevOrdersGroupedByOrderId (@RequestBody Barroom_Order order ){
 		try {
 			List<Object> result = new ArrayList<Object>();
-				result = bevOrderService.getBevOrdersGroupedByOrderIdFilterByStatus(status);
-				return ResponseEntity.ok(result);
+			result = bevOrderService.getBevOrdersGroupedByOrderIdFilterByStatus(order.getStatus(),order.getOrderDate());
+			return ResponseEntity.ok(result);
 			
 		}catch(Exception e) {
 			throw e;

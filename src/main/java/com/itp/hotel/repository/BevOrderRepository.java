@@ -1,5 +1,7 @@
 package com.itp.hotel.repository;
 
+import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -25,8 +27,8 @@ public interface BevOrderRepository extends JpaRepository<BevOrder, Long>  {
 	@Query("SELECT b.barroom_order_ID,b.status,b.orderDate,SUM(bo.total) FROM BevOrder bo JOIN Barroom_Order b ON bo.barroom_Order = b.barroom_order_ID GROUP BY b.barroom_order_ID")
 	public List<Object> getAllBevOrdersGroupedByOrderId();
 	
-	@Query("SELECT b.barroom_order_ID,b.status,b.orderDate,SUM(bo.total) FROM BevOrder bo JOIN Barroom_Order b ON bo.barroom_Order = b.barroom_order_ID WHERE b.status=?1 GROUP BY b.barroom_order_ID")
-	public List<Object> getBevOrdersGroupedByOrderIdFilterByStatus(String status);
+	@Query("SELECT b.barroom_order_ID,b.status,b.orderDate,SUM(bo.total) FROM BevOrder bo JOIN Barroom_Order b ON bo.barroom_Order = b.barroom_order_ID WHERE b.status=?1 and b.orderDate =?2 GROUP BY b.barroom_order_ID")
+	public List<Object> getBevOrdersGroupedByOrderIdFilterByStatus(String status,String orderDate);
 }
 
 
