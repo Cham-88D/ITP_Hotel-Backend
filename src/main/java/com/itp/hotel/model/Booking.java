@@ -39,7 +39,7 @@ public class Booking  {
   //   private Event event;
 
 	
-	//test commit now
+	//test commit in booking.java
 	@Column(name = "Date")
 	private LocalDate Date;
 	
