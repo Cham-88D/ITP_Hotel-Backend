@@ -31,9 +31,7 @@ public class Supplier {
 //	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int Sid;
 	
-	@OneToOne
-	@JoinColumn(name = "user_Id", referencedColumnName = "user_Id")
-	private Employee employee ;
+
 	
 	//@OneToMany(mappedBy = "supplier",cascade = CascadeType.ALL) 
    // private List <Item> item;
@@ -63,11 +61,10 @@ public class Supplier {
 
 
 
-	public Supplier(int sid, Employee employee, /*List<Item> item,*/ String name, String category, String email,
+	public Supplier(int sid, /*List<Item> item,*/ String name, String category, String email,
 			String phone, String nic,String password) {
 		super();
 		Sid = sid;
-		this.employee = employee;
 		//this.item = item;
 		Name = name;
 		Category = category;
@@ -86,9 +83,7 @@ public class Supplier {
 
 
 
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
+
 
 
 
@@ -137,9 +132,7 @@ public class Supplier {
 
 
 
-	public Employee getEmployee() {
-		return employee;
-	}
+
 
 
 

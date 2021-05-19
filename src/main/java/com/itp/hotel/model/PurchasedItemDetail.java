@@ -28,10 +28,7 @@ public class PurchasedItemDetail {
 	private int InvoiceNo;
 	
 	
-	@OneToOne
-	@JoinColumn(name = "user_Id", referencedColumnName = "user_Id")
-	private Employee employee ;
-	
+
 	
 	@Column(name = "S_Id")
 	private int Sid;
@@ -61,10 +58,9 @@ public class PurchasedItemDetail {
 	}
 
 
-	public PurchasedItemDetail(int invoiceNo, Employee employee, int sid, int itemCode,String itemName,String description, long payment, LocalDate date, String it_Category) {
+	public PurchasedItemDetail(int invoiceNo, int sid, int itemCode,String itemName,String description, long payment, LocalDate date, String it_Category) {
 		super();
 		InvoiceNo = invoiceNo;
-		this.employee = employee;
 		Sid = sid;
 		ItemCode = itemCode;
 		ItemName = itemName;
@@ -78,9 +74,6 @@ public class PurchasedItemDetail {
 		InvoiceNo = invoiceNo;
 	}
 
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
 
 	public void setSid(int sid) {
 		Sid = sid;
@@ -110,10 +103,6 @@ public class PurchasedItemDetail {
 
 	public int getInvoiceNo() {
 		return InvoiceNo;
-	}
-
-	public Employee getEmployee() {
-		return employee;
 	}
 
 	public int getSid() {

@@ -45,13 +45,13 @@ public class Purchased_Item_DetailController {
     }
     
     @PostMapping("/purchased_item_detail")
-    public PurchasedItemDetail createPurchasedItemDetail(@Valid @RequestBody PurchasedItemDetail purchased_item_detail) {
+    public PurchasedItemDetail createPurchasedItemDetail(@RequestBody PurchasedItemDetail purchased_item_detail) {
         return purchased_item_detailRepository.save(purchased_item_detail);
     }
     
    @PutMapping("/purchased_item_detail/{invoice_no}")
     public ResponseEntity<PurchasedItemDetail> updatePurchasedItemDetail(@PathVariable(value = "invoice_no") Integer Invoice_No,
-         @Valid @RequestBody PurchasedItemDetail purchased_item_detailDetails) throws ResourceNotFoundException {
+         @RequestBody PurchasedItemDetail purchased_item_detailDetails) throws ResourceNotFoundException {
         PurchasedItemDetail purchased_item_detail = purchased_item_detailRepository.findById(Invoice_No)
         .orElseThrow(() -> new ResourceNotFoundException("Purchased Item Detail not found for this id :: " + Invoice_No));
 

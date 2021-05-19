@@ -44,13 +44,13 @@ public class SupplierController {
     }
     
     @PostMapping("/supplier")
-    public Supplier createSupplier(@Valid @RequestBody Supplier supplier) {
+    public Supplier createSupplier(@RequestBody Supplier supplier) {
         return supplierRepository.save(supplier);
     }
     
     @PutMapping("/supplier/{sid}")
     public ResponseEntity<Supplier> updateSupplier(@PathVariable(value = "sid") Integer SId,
-         @Valid @RequestBody Supplier supplierDetails) throws ResourceNotFoundException {
+         @RequestBody Supplier supplierDetails) throws ResourceNotFoundException {
         Supplier supplier = supplierRepository.findById(SId)
         .orElseThrow(() -> new ResourceNotFoundException("Supplier not found for this id :: " + SId));
 
