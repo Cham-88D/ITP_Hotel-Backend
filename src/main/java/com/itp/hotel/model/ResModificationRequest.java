@@ -2,15 +2,16 @@ package com.itp.hotel.model;
 
 import java.time.LocalDate;
 
-import javax.persistence.CascadeType;
+
+//import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+//import javax.persistence.JoinColumn;
+//import javax.persistence.ManyToOne;
+//import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -23,18 +24,16 @@ public class ResModificationRequest {
 	@Column(name = "reserve_M_Id")
 	private int Reserve_M_Id;
 	
-	
-	
-	@OneToOne(cascade =CascadeType.ALL) 
-    @JoinColumn(name = "user_id", referencedColumnName = "user_Id")
-    private Customer customer;
+//	
+//	
 
 	
-	
-	@JoinColumn(name = "res_Id" ,nullable=false)
-	@ManyToOne
-    private Reservation reservations;
-	
+//	@JoinColumn(name = "res_Id" ,nullable=false)
+//	@ManyToOne
+//    private Reservation reservations;
+//	
+	@Column(name = "rm_id",length=30)
+	private int Rm_id;
 	
 	
 	@Column(name = "rm_type",length=30)
@@ -54,29 +53,32 @@ public class ResModificationRequest {
 		
 	}
 
-	public ResModificationRequest(int reserve_M_Id, Customer customer, Reservation reservations, String rm_Type,
+	public ResModificationRequest(int reserve_M_Id, int rm_id, String rm_Type,
 			String r_Reason, String r_Message, LocalDate rm_Req_Date) {
 		super();
+		Rm_id = rm_id;
 		Reserve_M_Id = reserve_M_Id;
-		this.customer = customer;
-		this.reservations = reservations;
+//		this.customer = customer;
+//		this.reservations = reservations;
 		Rm_Type = rm_Type;
 		R_Reason = r_Reason;
 		R_Message = r_Message;
 		Rm_Req_Date = rm_Req_Date;
 	}
-
+	
 	public void setReserve_M_Id(int reserve_M_Id) {
 		Reserve_M_Id = reserve_M_Id;
 	}
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
+	public void setRm_id(int rm_id) {
+		Rm_id = rm_id;
 	}
+//	public void setCustomer(Customer customer) {
+//		this.customer = customer;
+//	}
 
-	public void setReservations(Reservation reservations) {
-		this.reservations = reservations;
-	}
+//	public void setReservations(Reservation reservations) {
+//		this.reservations = reservations;
+//	}
 
 	public void setRm_Type(String rm_Type) {
 		Rm_Type = rm_Type;
@@ -97,14 +99,18 @@ public class ResModificationRequest {
 	public int getReserve_M_Id() {
 		return Reserve_M_Id;
 	}
-
-	public Customer getCustomer() {
-		return customer;
+	public int getRm_id() {
+		return Rm_id;
 	}
+//
+//
+//	public Customer getCustomer() {
+//		return customer;
+//	}
 
-	public Reservation getReservations() {
-		return reservations;
-	}
+//	public Reservation getReservations() {
+//		return reservations;
+//	}
 
 	public String getRm_Type() {
 		return Rm_Type;

@@ -1,6 +1,7 @@
-package com.itp.hotel.model;
+ package com.itp.hotel.model;
 
 import java.time.LocalDate;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
 import javax.persistence.Table;
 
 @Entity
@@ -20,11 +22,7 @@ public class Payment {
 	@Column(name = "pid")
 	private int PId;
 	
-	
-	@JoinColumn(name = "user_id" ,nullable=false)
-	@ManyToOne
-    private Customer customers;
-	
+
 	
 	@Column(name = "p_date")
 	private LocalDate P_Date;
@@ -44,10 +42,10 @@ public class Payment {
 
 	
 
-	public Payment(int pId, Customer customers, LocalDate p_Date, String pay_For, double amount, String method) {
+	public Payment(int pId,  LocalDate p_Date, String pay_For, double amount, String method) {
 		super();
 		PId = pId;
-		this.customers = customers;
+//		this.customers = customers;
 		P_Date = p_Date;
 		Pay_For = pay_For;
 		Amount = amount;
@@ -55,14 +53,24 @@ public class Payment {
 	}
 
 
+//	public Payment(int pId, Customer customers, LocalDate p_Date, String pay_For, double amount, String method) {
+//		super();
+//		PId = pId;
+////		this.customers = customers;
+//		P_Date = p_Date;
+//		Pay_For = pay_For;
+//		Amount = amount;
+//		Method = method;
+//	}
+
 
 	public void setPId(int pId) {
 		PId = pId;
 	}
 
-	public void setCustomers(Customer customers) {
-		this.customers = customers;
-	}
+//	public void setCustomers(Customer customers) {
+//		this.customers = customers;
+//	}
 
 	public void setP_Date(LocalDate p_Date) {
 		P_Date = p_Date;
@@ -84,9 +92,9 @@ public class Payment {
 		return PId;
 	}
 
-	public Customer getCustomers() {
-		return customers;
-	}
+//	public Customer getCustomers() {
+//		return customers;
+//	}
 
 	public LocalDate getP_Date() {
 		return P_Date;

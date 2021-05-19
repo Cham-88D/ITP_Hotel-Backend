@@ -26,13 +26,18 @@ public class OrderMenuItem {
 	
 	@Column(name = "Quantity")
 	private int qty;
+
 	
-	@Column(name = "unit_price")
-	private double unitPrice ;
+	@Column(name = "discount")
+	private float discount;
+	
+	@Column(name = "total")
+	private float total;
 	
 	@JoinColumn(name = "menu_Order_Id" ,nullable=false)
 	@ManyToOne
 	private ResOrder rest;
+	
 	@JoinColumn(name = "menu_Item_Id" ,nullable=false)
 	@ManyToOne
 	private ResMenuItem res;
@@ -41,16 +46,33 @@ public class OrderMenuItem {
 		super();
 	}
 
-	public OrderMenuItem(long order_item_id, String menuItemName, String menuItemType, int qty, double unitPrice,
-			ResOrder rest, ResMenuItem res) {
+	public OrderMenuItem( String menuItemName, String menuItemType, int qty,
+			ResOrder rest, ResMenuItem res,float discount,float total) {
 		super();
-		this.order_item_id = order_item_id;
 		this.menuItemName = menuItemName;
 		this.menuItemType = menuItemType;
 		this.qty = qty;
-		this.unitPrice = unitPrice;
+		this.discount = discount;
 		this.rest = rest;
 		this.res = res;
+		this.total = total;
+	}
+
+	
+	public float getTotal() {
+		return total;
+	}
+
+	public void setTotal(float total) {
+		this.total = total;
+	}
+
+	public float getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(float discount) {
+		this.discount = discount;
 	}
 
 	public void setOrder_item_id(long order_item_id) {
@@ -69,9 +91,7 @@ public class OrderMenuItem {
 		this.qty = qty;
 	}
 
-	public void setUnitPrice(double unitPrice) {
-		this.unitPrice = unitPrice;
-	}
+	
 
 	public void setRest(ResOrder rest) {
 		this.rest = rest;
@@ -97,10 +117,6 @@ public class OrderMenuItem {
 		return qty;
 	}
 
-	public double getUnitPrice() {
-		return unitPrice;
-	}
-
 	public ResOrder getRest() {
 		return rest;
 	}
@@ -109,8 +125,5 @@ public class OrderMenuItem {
 		return res;
 	}
 
-	
-	
-	
 
 }

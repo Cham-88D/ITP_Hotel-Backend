@@ -23,8 +23,8 @@ public class SalaryDetail {
 	
 	
 	
-	@OneToOne(cascade =CascadeType.ALL) 
-    @JoinColumn(name = "user_id", referencedColumnName = "user_Id")
+	@OneToOne
+    @JoinColumn(name = "emp_Id", referencedColumnName = "emp_Id")
     private Employee employee;
 
 	
@@ -47,6 +47,8 @@ public class SalaryDetail {
 	@Column(name="Allowance")
 	private double allowance;
 	
+	@Column(name="Basic")
+	private double basic;
 	
 	public SalaryDetail() {
 		super();
@@ -54,7 +56,7 @@ public class SalaryDetail {
 
 
 	public SalaryDetail(long salaryId, Employee employee, String role, double ot_rate, double eTF, double ePF,
-			double allowance) {
+			double allowance, double basic) {
 		super();
 		this.salaryId = salaryId;
 		this.employee = employee;
@@ -63,6 +65,17 @@ public class SalaryDetail {
 		ETF = eTF;
 		EPF = ePF;
 		this.allowance = allowance;
+		this.basic=basic;
+	}
+
+
+	public double getBasic() {
+		return basic;
+	}
+
+
+	public void setBasic(double basic) {
+		this.basic = basic;
 	}
 
 

@@ -13,56 +13,38 @@ import javax.persistence.Table;
 @Table(name="menu_item_category")
 public class MenuItemCategory {
 	
-	
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long  id;
 	
 	
-	
-	@Column(name= "menu_item_type", unique=true , nullable= false,length = 32)
+	@Column(name = "menu_item_type")
 	private String menuItemType;
 
 	public MenuItemCategory() {
 		super();
 	}
 
-	public MenuItemCategory(long id, String menuItemType) {
+	public MenuItemCategory(String menuItemType) {
 		super();
-		this.id = id;
 		this.menuItemType = menuItemType;
 	}
-
-
 
 	public void setId(long id) {
 		this.id = id;
 	}
 
-
-
 	public void setMenuItemType(String menuItemType) {
 		this.menuItemType = menuItemType;
 	}
-
-
 
 	public long getId() {
 		return id;
 	}
 
-
-
 	public String getMenuItemType() {
 		return menuItemType;
 	}
-	
-	
-
-
-	
-    
 	
 	
 }

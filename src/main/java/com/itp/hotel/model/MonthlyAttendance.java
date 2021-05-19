@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,16 +21,13 @@ public class MonthlyAttendance {
 	private long attendanceId;
 	
 	
-	@JoinColumn(name = "user_Id" ,nullable=false)
-	@ManyToOne
-    private Employee employee ;
-   
+
 	
 	@Column(name="Total_Attendance",nullable=false )
 	private int totalAttendance;
 	
 	@Column(name="Total_OT_Hours")
-	private float totalOt;
+	private int totalOt;
 	
 	@Column(name="Total_Leave")
 	private int totalLeave;
@@ -43,17 +41,19 @@ public class MonthlyAttendance {
 	@Column(name="Total_Quater_Day")
 	private int totalQuaterDay;
 	
-
+	@Column(name="Employee_ID")
+	private long employeeId;
+	
 	public MonthlyAttendance() {
 		super();
 	}
 
 
-	public MonthlyAttendance(long attendanceId, Employee employee, int totalAttendance, float totalOt, int totalLeave,
-			int totalAbsent, int totalHalfDay, int totalQuaterDay) {
+	public MonthlyAttendance(long attendanceId, int totalAttendance, int totalOt, int totalLeave,
+			int totalAbsent, int totalHalfDay, int totalQuaterDay,long employeeId) {
 		super();
 		this.attendanceId = attendanceId;
-		this.employee = employee;
+		this.employeeId = employeeId;
 		this.totalAttendance = totalAttendance;
 		this.totalOt = totalOt;
 		this.totalLeave = totalLeave;
@@ -68,8 +68,15 @@ public class MonthlyAttendance {
 	}
 
 
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
+	
+
+	public long getEmployeeId() {
+		return employeeId;
+	}
+
+
+	public void setEmployeeId(long employeeId) {
+		this.employeeId = employeeId;
 	}
 
 
@@ -78,7 +85,7 @@ public class MonthlyAttendance {
 	}
 
 
-	public void setTotalOt(float totalOt) {
+	public void setTotalOt(int totalOt) {
 		this.totalOt = totalOt;
 	}
 
@@ -108,17 +115,14 @@ public class MonthlyAttendance {
 	}
 
 
-	public Employee getEmployee() {
-		return employee;
-	}
-
+	
 
 	public int getTotalAttendance() {
 		return totalAttendance;
 	}
 
 
-	public float getTotalOt() {
+	public int getTotalOt() {
 		return totalOt;
 	}
 

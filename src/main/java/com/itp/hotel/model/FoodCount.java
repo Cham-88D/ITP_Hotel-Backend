@@ -23,13 +23,11 @@ public class FoodCount {
 	
 	
 
-	@JoinColumn(name = "user_Id")
-	@ManyToOne
-    private Employee employee ;
-     
+
+    
 	
-	@OneToOne(cascade =CascadeType.ALL) 
-    @JoinColumn(name = "food_id", referencedColumnName = "food_Id")
+	@ManyToOne
+	@JoinColumn(name="food_detail_id", nullable=false)
     private FoodDetails foodDetails;
 	
 	@Column(name = "Name")
@@ -48,11 +46,10 @@ public class FoodCount {
 		
 	}
 
-	public FoodCount(int count_id, Employee employee, FoodDetails foodDetails, String name, LocalDate date,
+	public FoodCount(int count_id, FoodDetails foodDetails, String name, LocalDate date,
 			String quantity, String type) {
 		super();
 		this.count_id = count_id;
-		this.employee = employee;
 		this.foodDetails = foodDetails;
 		Name = name;
 		Date = date;
@@ -64,9 +61,6 @@ public class FoodCount {
 		this.count_id = count_id;
 	}
 
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
 
 	public void setFoodDetails(FoodDetails foodDetails) {
 		this.foodDetails = foodDetails;
@@ -92,9 +86,6 @@ public class FoodCount {
 		return count_id;
 	}
 
-	public Employee getEmployee() {
-		return employee;
-	}
 
 	public FoodDetails getFoodDetails() {
 		return foodDetails;

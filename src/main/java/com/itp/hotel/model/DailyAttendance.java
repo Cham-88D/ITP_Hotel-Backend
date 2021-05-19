@@ -24,17 +24,17 @@ public class DailyAttendance {
 		
 		
 		
-		@OneToOne(cascade =CascadeType.ALL) 
-	    @JoinColumn(name = "user_id", referencedColumnName = "user_Id")
+		@OneToOne
+	    @JoinColumn(name = "emp_Id", referencedColumnName = "emp_Id")
 	    private Employee employee;
 
 		
 		
 		@Column(name="In_Time")
-		private LocalTime in_Time;
+		private String in_Time;
 		
 		@Column(name="Out_Time")
-		private LocalTime out_Time;
+		private String out_Time;
 		
 		@Column(name="OT_Hours")
 		private float otHours;
@@ -43,13 +43,13 @@ public class DailyAttendance {
 		private String atte_type;
 		
 		@Column(name="Date")
-		private LocalDate date;
+		private LocalDate date= LocalDate.now();
 		
 		public DailyAttendance() {
 			super();
 		}
 
-		public DailyAttendance(long attendanceId, Employee employee, LocalTime in_Time, LocalTime out_Time,
+		public DailyAttendance(long attendanceId, Employee employee, String in_Time, String out_Time,
 				float otHours, String atte_type, LocalDate date) {
 			super();
 			this.attendanceId = attendanceId;
@@ -69,11 +69,11 @@ public class DailyAttendance {
 			this.employee = employee;
 		}
 
-		public void setIn_Time(LocalTime in_Time) {
+		public void setIn_Time(String in_Time) {
 			this.in_Time = in_Time;
 		}
 
-		public void setOut_Time(LocalTime out_Time) {
+		public void setOut_Time(String out_Time) {
 			this.out_Time = out_Time;
 		}
 
@@ -97,11 +97,11 @@ public class DailyAttendance {
 			return employee;
 		}
 
-		public LocalTime getIn_Time() {
+		public String getIn_Time() {
 			return in_Time;
 		}
 
-		public LocalTime getOut_Time() {
+		public String getOut_Time() {
 			return out_Time;
 		}
 

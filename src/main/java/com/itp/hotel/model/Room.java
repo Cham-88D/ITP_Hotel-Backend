@@ -3,12 +3,12 @@ package com.itp.hotel.model;
 
 import javax.persistence.Column;
 
+
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,10 +20,6 @@ public class Room {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int RoomId;
 	
-	
-	@JoinColumn(name = "res_Id" ,nullable=false)
-	@ManyToOne
-    private Reservation reservation;
 	
 	@Column(name = "room_type", length=20,nullable=false)
 	private String Room_Type;
@@ -44,10 +40,9 @@ public class Room {
 
 
 
-	public Room(int roomId, Reservation reservation, String room_Type, String room_Status, double r_Price) {
+	public Room(  String room_Type, String room_Status, double r_Price) {
 		super();
-		RoomId = roomId;
-		this.reservation = reservation;
+		
 		Room_Type = room_Type;
 		Room_Status = room_Status;
 		R_Price = r_Price;
@@ -58,13 +53,6 @@ public class Room {
 	public void setRoomId(int roomId) {
 		RoomId = roomId;
 	}
-
-
-
-	public void setReservation(Reservation reservation) {
-		this.reservation = reservation;
-	}
-
 
 
 	public void setRoom_Type(String room_Type) {
@@ -87,12 +75,6 @@ public class Room {
 
 	public int getRoomId() {
 		return RoomId;
-	}
-
-
-
-	public Reservation getReservation() {
-		return reservation;
 	}
 
 

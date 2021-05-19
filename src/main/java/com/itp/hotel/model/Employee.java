@@ -1,79 +1,78 @@
 package com.itp.hotel.model;
 
 import java.time.LocalDate;
-import java.util.List;
 
-import javax.persistence.CascadeType;
+
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
 @Entity
-@Table(name = "employee")
-@PrimaryKeyJoinColumn(referencedColumnName="user_Id")
-public class Employee extends  User {
+@Table(name = "employee",uniqueConstraints = { 
+		@UniqueConstraint(columnNames = "nic"),
+		@UniqueConstraint(columnNames = "phone") 
+	})
 
-	private static final long serialVersionUID = 1L;
+public class Employee  {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "emp_Id")
+	private Long eid;
 	
-	@OneToMany(mappedBy = "employee",cascade = CascadeType.ALL) 
-    private List <MonthlyAttendance> monthlyAttendance;
-	
-	@OneToMany(mappedBy = "employee",cascade = CascadeType.ALL) 
-    private List <Payroll> payroll;
-	
-	
-	@OneToMany(mappedBy = "employee",cascade = CascadeType.ALL) 
-    private List <FoodCount> foodCount;
-	
-	@OneToMany(mappedBy = "employee",cascade = CascadeType.ALL) 
-    private List <Supplier> supplier;
-	
-	
-	@OneToMany(mappedBy = "employee",cascade = CascadeType.ALL) 
-    private List <PurchasedItemDetail> purchasedItemDetail;
-	    
-	@Column(name="nic", length=20, nullable=false)
+
+	@Column(name="nic", length=20)
 	private String nic;
 
-	@Column(name="fname", length=30, nullable=false)
+	@Column(name="fname", length=30)
 	private String fName;
 
-	@Column(name="lname", length=30, nullable=false)
+	@Column(name="lname", length=30)
 	private String lName;
 	
 	
-	@Column(name="address", length=30, nullable=false)
+	@Column(name="address", length=30)
 	private String address;
 	
-	@Column(name="dob", length=15, nullable=false)
+	@Column(name="dob", length=15)
 	private  LocalDate dateOfBirth;
 	
 	
-	@Column(name="start_date", length=15, nullable=false)
+	@Column(name="start_date", length=15)
 	private  LocalDate startDate;
     
 
-	@Column(name="phone", length=10, nullable=false)
+	@Column(name="phone", length=10)
 	private  String  phone;
 
+    
 
+	@ManyToOne()
+	@JoinColumn(name="role_id", referencedColumnName = "id")    
+	private Role roles;
+	
+	@OneToOne()
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
+	
+	
 	public Employee() {
 		super();
 	}
 
 
-	public Employee(Long userId, String username, String email, String password, String role,
-			List<MonthlyAttendance> monthlyAttendance, List<Payroll> payroll, List<FoodCount> foodCount,
-			List<Supplier> supplier, List<PurchasedItemDetail> purchasedItemDetail, String nic, String fName,
-			String lName, String address, LocalDate dateOfBirth, LocalDate startDate, String phone) {
-		super(userId, username, email, password, role);
-		this.monthlyAttendance = monthlyAttendance;
-		this.payroll = payroll;
-		this.foodCount = foodCount;
-		this.supplier = supplier;
-		this.purchasedItemDetail = purchasedItemDetail;
+	public Employee(Long eid, String nic, String fName, String lName, String address, LocalDate dateOfBirth,
+			LocalDate startDate, String phone) {
+		super();
+		this.eid = eid;
 		this.nic = nic;
 		this.fName = fName;
 		this.lName = lName;
@@ -84,28 +83,8 @@ public class Employee extends  User {
 	}
 
 
-	public void setMonthlyAttendance(List<MonthlyAttendance> monthlyAttendance) {
-		this.monthlyAttendance = monthlyAttendance;
-	}
-
-
-	public void setPayroll(List<Payroll> payroll) {
-		this.payroll = payroll;
-	}
-
-
-	public void setFoodCount(List<FoodCount> foodCount) {
-		this.foodCount = foodCount;
-	}
-
-
-	public void setSupplier(List<Supplier> supplier) {
-		this.supplier = supplier;
-	}
-
-
-	public void setPurchasedItemDetail(List<PurchasedItemDetail> purchasedItemDetail) {
-		this.purchasedItemDetail = purchasedItemDetail;
+	public void setEid(Long eid) {
+		this.eid = eid;
 	}
 
 
@@ -144,33 +123,8 @@ public class Employee extends  User {
 	}
 
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-
-	public List<MonthlyAttendance> getMonthlyAttendance() {
-		return monthlyAttendance;
-	}
-
-
-	public List<Payroll> getPayroll() {
-		return payroll;
-	}
-
-
-	public List<FoodCount> getFoodCount() {
-		return foodCount;
-	}
-
-
-	public List<Supplier> getSupplier() {
-		return supplier;
-	}
-
-
-	public List<PurchasedItemDetail> getPurchasedItemDetail() {
-		return purchasedItemDetail;
+	public Long getEid() {
+		return eid;
 	}
 
 
@@ -183,6 +137,11 @@ public class Employee extends  User {
 		return fName;
 	}
 
+	public void setUser(User u) {
+		this.user = u;
+	}
+	
+	
 
 	public String getlName() {
 		return lName;
@@ -207,18 +166,39 @@ public class Employee extends  User {
 	public String getPhone() {
 		return phone;
 	}
+	
+	
+	public Role getRoles() {
+		return roles;
+	}
 
+	public void setRoles(Role roles) {
+		this.roles = roles;
+	}
+	
+	public User getUser() {
+		return user;
+	}
 
 	
-
 	
-
-
 	
-
-
 	
 }
+	
+
+
+	
+	
+	
+
+	
+
+
+	
+
+
+
 
 
 

@@ -1,6 +1,8 @@
 package com.itp.hotel.model;
 
 import java.time.LocalDate;
+
+
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -27,18 +29,14 @@ public class Reservation {
 	private int Res_Id;
 	
 	
-	@OneToMany(mappedBy = "reservation",cascade = CascadeType.ALL) 
-    private List <Room> room;
+	//@OneToMany(mappedBy = "reservation",cascade = CascadeType.ALL) 
+    //private List <Room> room;
 	
-	@OneToMany(mappedBy = "reservations",cascade = CascadeType.ALL) 
-    private List <ResModificationRequest> resModificationRequest;
-	
+//	@OneToMany(mappedBy = "reservations",cascade = CascadeType.ALL) 
+//    private List <ResModificationRequest> resModificationRequest;
+//	
+//
 
-	@JoinColumn(name = "user_id" ,nullable=false)
-	@ManyToOne
-    private Customer customer;
-	
-	
 	
 	
 	@Column(name = "cus_name",length=80)
@@ -73,14 +71,14 @@ public class Reservation {
 
 
 
-	public Reservation(int res_Id, List<Room> room, List<ResModificationRequest> resModificationRequest,
+	public Reservation(int res_Id, List<ResModificationRequest> resModificationRequest,
 			Customer customer, String cus_Name, int cus_Phone, LocalDate check_In, LocalDate check_Out,
 			int no_Of_Ac_Rooms, int no_Of_Non_Ac_Rooms, int no_Of_Child, int no_Of_Adult) {
 		super();
 		Res_Id = res_Id;
-		this.room = room;
-		this.resModificationRequest = resModificationRequest;
-		this.customer = customer;
+		//this.room = room;
+//		this.resModificationRequest = resModificationRequest;
+//		this.customer = customer;
 		Cus_Name = cus_Name;
 		Cus_Phone = cus_Phone;
 		Check_In = check_In;
@@ -99,21 +97,21 @@ public class Reservation {
 
 
 
-	public void setRoom(List<Room> room) {
-		this.room = room;
-	}
+	//public void setRoom(List<Room> room) {
+	//	this.room = room;
+	//}
 
 
 
-	public void setResModificationRequest(List<ResModificationRequest> resModificationRequest) {
-		this.resModificationRequest = resModificationRequest;
-	}
-
-
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
+//	public void setResModificationRequest(List<ResModificationRequest> resModificationRequest) {
+//		this.resModificationRequest = resModificationRequest;
+//	}
+//
+//
+//
+//	public void setCustomer(Customer customer) {
+//		this.customer = customer;
+//	}
 
 
 
@@ -171,21 +169,21 @@ public class Reservation {
 
 
 
-	public List<Room> getRoom() {
-		return room;
-	}
+	//public List<Room> getRoom() {
+	//	return room;
+	//}
 
 
 
-	public List<ResModificationRequest> getResModificationRequest() {
-		return resModificationRequest;
-	}
-
-
-
-	public Customer getCustomer() {
-		return customer;
-	}
+//	public List<ResModificationRequest> getResModificationRequest() {
+//		return resModificationRequest;
+//	}
+//
+//
+//
+//	public Customer getCustomer() {
+//		return customer;
+//	}
 
 
 
