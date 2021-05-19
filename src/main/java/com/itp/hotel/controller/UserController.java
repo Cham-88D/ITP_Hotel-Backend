@@ -36,15 +36,11 @@ public class UserController {
 		}
 	}
 	
-	@PostMapping("/isUserExist")
-	public ResponseEntity checkUserExists(@RequestBody String username) {
+	@GetMapping("/isUserExist/{username}")
+	public ResponseEntity checkUserExists(@PathVariable String username) {
 		try {
 			User user = userService.getUserByUsername(username);
-			if(user != null) {
-				return ResponseEntity.ok(true);
-			}else {
-				return ResponseEntity.ok(false);
-			}
+			return ResponseEntity.ok(user);
 		}catch(Exception e) {
 			throw e;
 		}
