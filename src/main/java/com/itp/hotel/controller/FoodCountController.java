@@ -24,9 +24,10 @@ import com.itp.hotel.repository.FoodCountRepository;
 import com.itp.hotel.repository.FoodDetailsRepository;
 import com.itp.hotel.exception.ResourceNotFoundException;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000" ,maxAge = 3600)
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/auth")
+
 public class FoodCountController {
 	
 	@Autowired
