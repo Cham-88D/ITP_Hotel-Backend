@@ -1,8 +1,6 @@
 package com.itp.hotel.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +13,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import com.itp.hotel.exception.ResourceNotFoundException;
 import com.itp.hotel.model.Beverage;
-import com.itp.hotel.model.ResourceNotFoundException;
 import com.itp.hotel.service.BeverageService;
 
 @CrossOrigin(origins = "http://localhost:3000")

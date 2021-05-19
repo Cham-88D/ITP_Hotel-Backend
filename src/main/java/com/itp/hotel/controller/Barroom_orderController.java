@@ -14,11 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.itp.hotel.model.Barroom_Order;
-import com.itp.hotel.model.Beverage;
-import com.itp.hotel.model.ResourceNotFoundException;
-import com.itp.hotel.repository.Barroom_orderRepository;
 import com.itp.hotel.service.Barroom_OrderService;
-import com.itp.hotel.service.BeverageService;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
