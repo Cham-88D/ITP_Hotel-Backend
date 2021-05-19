@@ -2,21 +2,19 @@ package com.itp.hotel.model;
 
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 
 @Entity
 @Table(name = "customer")
-@PrimaryKeyJoinColumn(referencedColumnName="user_Id")
+public class Customer {
 
-public class Customer extends  User {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long cus_ID;
 
 	private static final long serialVersionUID = 1L;
 	
@@ -38,69 +36,57 @@ public class Customer extends  User {
 		super();
 	}
 
-
-	public Customer(Long userId, String username, String email, String password, String role,
-			/*List<Reservation> reservation, List<Payment> payment, List<Booking> booking,*/ String nic, String fName,
-			String lName, String phoneNum) {
-		super(userId, username, email, password, role);
+	public Customer(Long cus_ID, String nic, String fName, String lName, String phoneNum) {
+		this.cus_ID = cus_ID;
 		this.nic = nic;
 		this.fName = fName;
 		this.lName = lName;
 		this.phoneNum = phoneNum;
+	}
+
+	public Long getCus_ID() {
+		return cus_ID;
+	}
+
+	public void setCus_ID(Long cus_ID) {
+		this.cus_ID = cus_ID;
+	}
+
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+
+	public String getNic() {
+		return nic;
 	}
 
 	public void setNic(String nic) {
 		this.nic = nic;
 	}
 
+	public String getfName() {
+		return fName;
+	}
 
 	public void setfName(String fName) {
 		this.fName = fName;
 	}
 
+	public String getlName() {
+		return lName;
+	}
 
 	public void setlName(String lName) {
 		this.lName = lName;
 	}
 
-
-	public void setPhoneNum(String phoneNum) {
-		this.phoneNum = phoneNum;
-	}
-
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-
-
-	public String getNic() {
-		return nic;
-	}
-
-
-	public String getfName() {
-		return fName;
-	}
-
-
-	public String getlName() {
-		return lName;
-	}
-
-
 	public String getPhoneNum() {
 		return phoneNum;
 	}
 
-
-
-
-	
-	
-	
-
+	public void setPhoneNum(String phoneNum) {
+		this.phoneNum = phoneNum;
+	}
 }
 
 
