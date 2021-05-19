@@ -42,17 +42,17 @@ public class CustomerController {
 	    }
 	    
 	    @PostMapping("/customers")
-	    public Customer createCustomer(@Valid @RequestBody Customer customer) {
+	    public Customer createCustomer(@RequestBody Customer customer) {
 	        return customerRepository.save(customer);
 	    }
 	    
 	    @PutMapping("/customers/{CID}")
 	    public ResponseEntity<Customer> updateCustomer(@PathVariable(value = "CID") Long CID,
-	         @Valid @RequestBody Customer customerDetails) throws ResourceNotFoundException {
+	         @RequestBody Customer customerDetails) throws ResourceNotFoundException {
 	    	Customer customer = customerRepository.findById(CID)
 	        .orElseThrow(() -> new ResourceNotFoundException("Customer not found for this id :: " + CID));
 
-	    	customer.setId(customer.getId());
+	    	customer.setCus_ID(customer.getCus_ID());
 	    	customer.setNic(customer.getNic());
 	    	customer.setfName(customer.getfName());
 	    	customer.setlName(customer.getlName());

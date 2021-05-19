@@ -43,13 +43,13 @@ public class Ev_Modification_RequestController {
 	    }
 	    
 	    @PostMapping("/ev_Modification_Requests")
-	    public EvModificationRequest createEv_Modification_Request(@Valid @RequestBody EvModificationRequest ev_Modification_Request) {
+	    public EvModificationRequest createEv_Modification_Request(@RequestBody EvModificationRequest ev_Modification_Request) {
 	        return ev_Modification_RequestRepository.save(ev_Modification_Request);
 	    }
 	    
 	    @PutMapping("/ev_Modification_Requests/{Ev_M_ID}")
 	    public ResponseEntity<EvModificationRequest> updateEv_Modification_Request(@PathVariable(value = "Ev_M_ID") Integer Ev_M_ID,
-	         @Valid @RequestBody EvModificationRequest ev_Modification_RequestDetails) throws ResourceNotFoundException {
+	         @RequestBody EvModificationRequest ev_Modification_RequestDetails) throws ResourceNotFoundException {
 	    	EvModificationRequest ev_Modification_Request = ev_Modification_RequestRepository.findById(Ev_M_ID)
 	        .orElseThrow(() -> new ResourceNotFoundException("Ev_Modification_Request not found for this id :: " + Ev_M_ID));
 
