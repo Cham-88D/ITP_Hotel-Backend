@@ -51,7 +51,7 @@ public class RoomController {
 	        return ResponseEntity.ok(room);
 	    }
 	    @PostMapping("/rooms")
-	    public Room createRoom (@Valid @RequestBody Room room) {
+	    public Room createRoom (@RequestBody Room room) {
 	        return roomRepository.save(room);
 	    }
 	    

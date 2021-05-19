@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.itp.hotel.exception.*;
 import com.itp.hotel.model.Payment;
-import com.itp.hotel.model.Room;
 import com.itp.hotel.repository.PaymentRepository;
 
 
@@ -55,7 +54,7 @@ public class PaymentController {
 	    }
 	 
 	    @PostMapping("/payments")
-	    public Payment createPayment (@Valid @RequestBody Payment payment) {
+	    public Payment createPayment (@RequestBody Payment payment) {
 	        return paymentRepository.save(payment);
 	    }
 

@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.itp.hotel.exception.*;
 import com.itp.hotel.model.ResModificationRequest;
-import com.itp.hotel.model.Room;
 import com.itp.hotel.repository.ResModificationRequestRepository;
 
 
@@ -52,7 +51,7 @@ public class Res_Modification_RequestController {
 	    }
 	 
 	    @PostMapping("/res_modification_requests")
-	    public ResModificationRequest createRes_Modification_Request(@Valid @RequestBody ResModificationRequest res_Modification_Request) {
+	    public ResModificationRequest createRes_Modification_Request(@RequestBody ResModificationRequest res_Modification_Request) {
 	        return res_Modification_RequestRepository.save(res_Modification_Request);
 	    }
 	 
