@@ -22,7 +22,6 @@ import com.itp.hotel.repository.CustomerRepository;
 @CrossOrigin(origins = "http://localhost:3000" ,maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
-
 public class CustomerController {
 
 	@Autowired
