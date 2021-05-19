@@ -33,8 +33,6 @@ public class ResOrder {
 	@OneToMany(mappedBy = "rest", cascade = CascadeType.ALL)
 	private Set<OrderMenuItem> order_Menu_Item = new HashSet();
 	
-	@OneToOne(mappedBy = "res")
-	private ResBill Res_Bill;
 
 	public ResOrder() {
 		super();
@@ -57,10 +55,6 @@ public class ResOrder {
 		this.order_Menu_Item = order_Menu_Item;
 	}
 
-	public void Res_Bill(ResBill res_Bill) {
-		Res_Bill = res_Bill;
-	}
-
 	public long getMenu_order_id() {
 		return menu_order_id;
 	}
@@ -73,9 +67,7 @@ public class ResOrder {
 		return order_Menu_Item;
 	}
 
-	public ResBill getRes_Bill() {
-		return Res_Bill;
-	}
+
 
 	
 	
