@@ -21,10 +21,9 @@ import com.itp.hotel.model.EvModificationRequest;
 
 import com.itp.hotel.repository.EvModificationRequestRepository;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000" ,maxAge = 3600)
 @RestController
-@RequestMapping("/api/v1/")
-
+@RequestMapping("/api/auth")
 
 public class Ev_Modification_RequestController {
 	@Autowired

@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.itp.hotel.exception.ResourceNotFoundException;
 import com.itp.hotel.model.Customer;
 import com.itp.hotel.repository.CustomerRepository;
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000" ,maxAge = 3600)
 @RestController
-@RequestMapping("/api/v1/")
+@RequestMapping("/api/auth")
 
 public class CustomerController {
 
