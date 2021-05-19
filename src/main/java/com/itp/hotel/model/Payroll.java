@@ -22,9 +22,6 @@ public class Payroll {
 	private long payId;
 	
 	
-//	@JoinColumn(name = "user_Id")
-//	@ManyToOne
-//    private Employee employee ;
 
 	private String employeeId;
 	

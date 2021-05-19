@@ -20,9 +20,9 @@ import com.itp.hotel.exception.ResourceNotFoundException;
 import com.itp.hotel.model.DailyAttendance;
 
 import com.itp.hotel.repository.DailyAttendanceRepository;
-@CrossOrigin(origins="http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000" ,maxAge = 3600)
 @RestController
-@RequestMapping("api/v1/")
+@RequestMapping("/api/auth")
 public class Daily_AttendanceController {
 
 	@Autowired

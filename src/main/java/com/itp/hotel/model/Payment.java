@@ -22,11 +22,7 @@ public class Payment {
 	@Column(name = "pid")
 	private int PId;
 	
-//	
-//	@JoinColumn(name = "user_id" ,nullable=false)
-//	@ManyToOne
-//    private Customer customers;
-	
+
 	
 	@Column(name = "p_date")
 	private LocalDate P_Date;

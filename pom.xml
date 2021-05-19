@@ -70,21 +70,6 @@
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.12</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-core</artifactId>
-            <version>5.4.6</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-web</artifactId>
-            <version>5.4.6</version>
-        </dependency>
     </dependencies>
 
     <build>

@@ -21,10 +21,7 @@ public class MonthlyAttendance {
 	private long attendanceId;
 	
 	
-//	@JoinColumn(name = "user_Id" ,nullable=false)
-//	@OneToOne
-//    private Employee employee ;
-   
+
 	
 	@Column(name="Total_Attendance",nullable=false )
 	private int totalAttendance;

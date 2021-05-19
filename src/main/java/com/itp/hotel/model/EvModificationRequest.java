@@ -20,10 +20,7 @@ public class EvModificationRequest {
 		@GeneratedValue(strategy = GenerationType.AUTO)
 		private int Ev_M_ID;
 		
-	
-		@OneToOne/*(cascade =CascadeType.ALL)*/ 
-	    @JoinColumn(name = "user_id", referencedColumnName = "user_Id")
-	    private User use;
+
 		
 		
 		@Column(name = "Reason",length=254)
@@ -62,15 +59,9 @@ public class EvModificationRequest {
 			Ev_M_ID = ev_M_ID;
 		}
 
-		public void setUser(User c) {
 
-			this.use = c;
-		}
 		
-		
-		public void setId(Long c) {
-			this.use.setId(c);
-		}
+
 
 		public void setReason(String reason) {
 			Reason = reason;

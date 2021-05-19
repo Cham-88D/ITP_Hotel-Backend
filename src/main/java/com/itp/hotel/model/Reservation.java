@@ -36,11 +36,7 @@ public class Reservation {
 //    private List <ResModificationRequest> resModificationRequest;
 //	
 //
-//	@JoinColumn(name = "user_id" ,nullable=false)
-//	@ManyToOne
-//    private Customer customer;
-	
-	
+
 	
 	
 	@Column(name = "cus_name",length=80)

@@ -26,11 +26,7 @@ public class ResModificationRequest {
 	
 //	
 //	
-//	@OneToOne(cascade =CascadeType.ALL) 
-//    @JoinColumn(name = "user_id", referencedColumnName = "user_Id")
-//    private Customer customer;
 
-	
 	
 //	@JoinColumn(name = "res_Id" ,nullable=false)
 //	@ManyToOne

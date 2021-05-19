@@ -59,8 +59,8 @@ public class Discount_Policy_Controller {
 		}
 		
 		// update beverage item details
-		@PutMapping("/beverages/{id}")
-		public ResponseEntity<DiscountPolicy> updateBeverageItems(@PathVariable Long id, @RequestBody DiscountPolicy dp) {
+		@PutMapping("/policies/{id}")
+		public ResponseEntity<DiscountPolicy> updatePolicy(@PathVariable Long id, @RequestBody DiscountPolicy dp) {
 
 			try {
 				DiscountPolicy single_dp = discountPolicyService.get(id);
