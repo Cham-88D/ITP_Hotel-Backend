@@ -17,10 +17,9 @@ import com.itp.hotel.exception.ResourceNotFoundException;
 import com.itp.hotel.model.Beverage;
 import com.itp.hotel.service.BeverageService;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000" ,maxAge = 3600)
 @RestController
-@RequestMapping("/api/v1/")
-
+@RequestMapping("/api/auth")
 public class BeverageController {
 	@Autowired
 	private BeverageService beverageService;

@@ -18,11 +18,9 @@ import com.itp.hotel.exception.*;
 import com.itp.hotel.repository.ItemCategoryRepository;
 import com.itp.hotel.service.MenuTypeService;
 
-@CrossOrigin(origins ="http://localhost:3000")
-
+@CrossOrigin(origins = "http://localhost:3000" ,maxAge = 3600)
 @RestController
-@RequestMapping("/api/v1/")
-
+@RequestMapping("/api/auth")
 public class Item_Category_Controller {
 	
 

@@ -21,11 +21,9 @@ import com.itp.hotel.model.ResOrder;
 import com.itp.hotel.exception.*;
 import com.itp.hotel.repository.ResOredrReposiyory;
 
-@CrossOrigin(origins ="http://localhost:3000")
-
+@CrossOrigin(origins = "http://localhost:3000" ,maxAge = 3600)
 @RestController
-@RequestMapping("/api/v1/")
-
+@RequestMapping("/api/auth")
 public class Res_Order_Controller {
 	@Autowired
 	private  ResOredrReposiyory  res_Oredr_Reposiyory;

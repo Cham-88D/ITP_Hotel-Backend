@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.itp.hotel.exception.ResourceNotFoundException;
 import com.itp.hotel.model.Beverage_Item_Category;
 import com.itp.hotel.repository.Beverage_Item_CategoryRepository;
-@CrossOrigin(origins ="http://localhost:3000" )
+@CrossOrigin(origins = "http://localhost:3000" ,maxAge = 3600)
 @RestController
-@RequestMapping("/api/v1/")
+@RequestMapping("/api/auth")
 public class Beverage_Item_categoryController {
 	
 	@Autowired
